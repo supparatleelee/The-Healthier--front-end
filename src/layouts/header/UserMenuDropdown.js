@@ -5,7 +5,7 @@ function UserMenuDropdown({ open, onClose }) {
   return (
     <div
       id="dropdown"
-      className={` z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[12rem] ml-[5rem] p-1 ${
+      className={`animate-fadeOpen z-10 w-44 bg-white rounded-xl divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[12rem] ml-[5rem] p-1 ${
         open ? '' : 'hidden'
       }`}
     >

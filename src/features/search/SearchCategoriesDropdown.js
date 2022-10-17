@@ -2,7 +2,7 @@ function SearchCategoriesDropdown({ open, onClose }) {
   return (
     <div
       id="dropdown"
-      className={` z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[2.7rem] ${
+      className={` z-10 w-44 bg-white rounded-xl divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[3rem] animate-fadeOpen ${
         open ? '' : 'hidden'
       }`}
     >
