@@ -12,7 +12,7 @@ function UserMenu() {
     >
       <span className="mr-5">Become a Specialist</span>
 
-      <div className="bg-[#DE8443] hover:bg-gradient-to-r from-[#DE8443] to-[#B3683C] w-[100px] h-[45px] rounded-3xl flex items-center justify-center">
+      <div className="bg-[#DE8443] hover:bg-gradient-to-r from-[#DE8443] to-[#B3683C] w-[100px] h-[45px] rounded-3xl flex items-center justify-center hover:shadow-lg">
         <div className="flex items-center gap-1">
           <MenuWhite />
           <AccountWhite />
