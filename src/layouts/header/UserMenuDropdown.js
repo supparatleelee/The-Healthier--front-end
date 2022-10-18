@@ -1,13 +1,28 @@
 import { Language } from '../../components/icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from '../../components/ui/Modal';
 import LoginForm from '../../features/auth/LoginForm';
 import RegisterForm from '../../features/auth/RegisterForm';
 
-function UserMenuDropdown({ open, onClose }) {
+function UserMenuDropdown({ open, onClose, Ele }) {
+  console.log(Ele);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const dropdownEl = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!dropdownEl.current.contains(e.target)) {
+        if (!Ele.current.contains(e.target)) {
+          onClose();
+        }
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onClose, Ele]);
 
   return (
     <>
@@ -16,6 +31,8 @@ function UserMenuDropdown({ open, onClose }) {
         className={`animate-fadeOpen z-10 w-44 bg-white rounded-xl divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[12rem] ml-[5rem] p-1 ${
           open ? '' : 'hidden'
         }`}
+        ref={dropdownEl}
+        onClick={(e) => e.stopPropagation()}
       >
         <ul
           className="py-1 text-sm text-gray-700 dark:text-gray-200"

@@ -1,10 +1,27 @@
-function SearchCategoriesDropdown({ open, onClose }) {
+import { useEffect, useRef } from 'react';
+
+function SearchCategoriesDropdown({ open, onClose, Ele }) {
+  const dropdownEl = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!dropdownEl.current.contains(e.target)) {
+        if (!Ele.current.contains(e.target)) {
+          onClose();
+        }
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onClose, Ele]);
+
   return (
     <div
       id="dropdown"
       className={` z-10 w-44 bg-white rounded-xl divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[3rem] animate-fadeOpen ${
         open ? '' : 'hidden'
       }`}
+      ref={dropdownEl}
     >
       <ul
         className="py-1 text-sm text-gray-700 dark:text-gray-200"
