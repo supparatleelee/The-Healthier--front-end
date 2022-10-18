@@ -18,6 +18,9 @@ const authSlice = createSlice({
   },
 });
 
+console.log(authSlice.actions);
+const { showUser } = authSlice.actions;
+
 export const thunkSignup = (registerInfo) => async (dispatch) => {
   try {
     const res = await authService.signup(registerInfo);
@@ -32,7 +35,6 @@ export const thunkSignup = (registerInfo) => async (dispatch) => {
 export const thunkLogin = (loginInfo) => async (dispatch) => {
   try {
     const res = await authService.login(loginInfo);
-    // const res = await axios.post('/auth/login',loginInfo)
     addAccessToken(res.data.token);
     const user = await authService.getMe();
     dispatch(showUser(user.data.user));
@@ -43,5 +45,4 @@ export const thunkLogin = (loginInfo) => async (dispatch) => {
 };
 
 export default authSlice.reducer;
-const { userInfo } = authSlice.actions;
-export { userInfo };
+export { showUser };
