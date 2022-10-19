@@ -74,7 +74,7 @@ function UserMenuDropdown({ open, onClose, Ele }) {
         </ul>
       </div>
 
-      <Modal
+      {/* <Modal
         title="Register"
         modalOpen={state.isRegisterModalOpen}
         onModalClose={() => dispatch(showModalRegister(false))}
@@ -88,7 +88,7 @@ function UserMenuDropdown({ open, onClose, Ele }) {
         onModalClose={() => dispatch(showModalLogin(false))}
       >
         <LoginForm />
-      </Modal>
+      </Modal> */}
     </>
   );
 }
