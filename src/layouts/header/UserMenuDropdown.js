@@ -1,14 +1,18 @@
 import { Language } from '../../components/icons';
 import { Link } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Modal from '../../components/ui/Modal';
 import LoginForm from '../../features/auth/LoginForm';
 import RegisterForm from '../../features/auth/RegisterForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { showModalLogin, showModalRegister } from '../../reduxStore/AuthSlice';
 
 function UserMenuDropdown({ open, onClose, Ele }) {
-  console.log(Ele);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  // const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  // const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const state = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const dropdownEl = useRef();
 
@@ -42,7 +46,7 @@ function UserMenuDropdown({ open, onClose, Ele }) {
             <Link
               type="button"
               className="font-semibold inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              onClick={() => setIsRegisterModalOpen(true)}
+              onClick={() => dispatch(showModalRegister(true))}
             >
               Sign Up
             </Link>
@@ -50,7 +54,7 @@ function UserMenuDropdown({ open, onClose, Ele }) {
           <li>
             <Link
               className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              onClick={() => setIsLoginModalOpen(true)}
+              onClick={() => dispatch(showModalLogin(true))}
             >
               Log In
             </Link>
@@ -72,16 +76,16 @@ function UserMenuDropdown({ open, onClose, Ele }) {
 
       <Modal
         title="Register"
-        modalOpen={isRegisterModalOpen}
-        onModalClose={() => setIsRegisterModalOpen(false)}
+        modalOpen={state.isRegisterModalOpen}
+        onModalClose={() => dispatch(showModalRegister(false))}
       >
         <RegisterForm />
       </Modal>
 
       <Modal
         title="Login"
-        modalOpen={isLoginModalOpen}
-        onModalClose={() => setIsLoginModalOpen(false)}
+        modalOpen={state.isLoginModalOpen}
+        onModalClose={() => dispatch(showModalLogin(false))}
       >
         <LoginForm />
       </Modal>

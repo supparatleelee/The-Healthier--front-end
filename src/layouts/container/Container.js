@@ -1,5 +1,8 @@
+import { useSelector } from 'react-redux';
+
 function Container({ children }) {
-  let user = 0;
+  const state = useSelector((state) => state.auth);
+  const user = state.userInfo;
 
   return (
     <>
