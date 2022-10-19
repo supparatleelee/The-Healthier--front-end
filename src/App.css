@@ -8,6 +8,9 @@
   .bg-primary {
     @apply bg-[#DE8443];
   }
+  .border-primary {
+    @apply border-[#DE8443];
+  }
   .text-primary {
     @apply text-[#DE8443];
   }

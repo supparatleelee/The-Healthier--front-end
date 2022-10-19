@@ -4,7 +4,7 @@ import Container from '../container/Container';
 
 function HeaderLayout() {
   return (
-    <div className="">
+    <div>
       <Header />
       <Container>
         <Outlet />
