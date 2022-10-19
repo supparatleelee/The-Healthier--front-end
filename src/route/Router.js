@@ -13,6 +13,7 @@ import HomePage from '../pages/HomePage';
 function Router() {
   const state = useSelector((state) => state.auth);
   const user = state.userInfo;
+  const userPI = 1;
   // const user = 0;
 
   return (
