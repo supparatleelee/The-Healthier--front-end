@@ -46,6 +46,7 @@ function RegisterForm() {
     google.accounts.id.initialize({
       client_id:
         '346530911255-de4hvnvqe35a1510mrsqlas3qbp36cq0.apps.googleusercontent.com',
+      // '1057761295755-tugchldrnd4theb74i8fs0h6b8b5302p.apps.googleusercontent.com',
       callback: handleCallbackResponse,
     });
     google.accounts.id.renderButton(document.getElementById('signInBtn'), {

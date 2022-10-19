@@ -9,8 +9,8 @@ function LoginForm() {
   const dispatch = useDispatch();
 
   const initial = {
-    email: null,
-    password: null,
+    email: '',
+    password: '',
   };
   const [dataLogin, setDataLogin] = useState(initial);
 
@@ -100,7 +100,9 @@ function LoginForm() {
       {/* Google Button */}
       <button
         type="button"
+        id="signInBtn"
         className="bg-white border text-black rounded-xl h-[6vh] flex justify-center items-center gap-5 hover:border-gray-900"
+        onClick={handleCallbackResponse}
       >
         <GoogleLogo />
         Continue with Google
