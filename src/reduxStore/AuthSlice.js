@@ -25,12 +25,6 @@ const authSlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
-console.log(authSlice.actions);
-const { showUser } = authSlice.actions;
-
-export const thunkSignup = (registerInfo) => async (dispatch) => {
-=======
 const { showUser, showModalRegister, showModalLogin } = authSlice.actions;
 
 export const thunkGetMe = () => async (dispatch) => {
@@ -39,7 +33,6 @@ export const thunkGetMe = () => async (dispatch) => {
 };
 
 export const thunkSignup = (registerInfo, init) => async (dispatch) => {
->>>>>>> register
   try {
     dispatch(loading(true));
     const res = await authService.signup(registerInfo);
@@ -58,7 +51,6 @@ export const thunkSignup = (registerInfo, init) => async (dispatch) => {
 
 export const thunkGooglelogin = (tokenId) => async (dispatch) => {
   try {
-   
     dispatch(loading(true));
     const res = await authService.googleLogin(tokenId);
     toastDisplaySuccess('success');
@@ -92,8 +84,5 @@ export const thunkLogin = (data, init) => async (dispatch) => {
 };
 
 export default authSlice.reducer;
-<<<<<<< HEAD
-export { showUser };
-=======
+
 export { showUser, showModalRegister, showModalLogin };
->>>>>>> register
