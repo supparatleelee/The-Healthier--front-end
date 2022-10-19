@@ -49,7 +49,10 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
           </Link>
         </li>
         <li>
-          <Link className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+          <Link
+            to="/1/message/thread/C-tasz2s"
+            className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
             Messages
           </Link>
         </li>
