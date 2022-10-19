@@ -11,6 +11,7 @@ import SurveyLayout from '../layouts/surveyHeader/SurveyLayout';
 import HomePage from '../pages/HomePage';
 import SpecialistProfilePage from '../pages/SpecialistProfilePage';
 import SpecialistRatingsAndReviewsPage from '../pages/SpecialistRatingsAndReviewsPage';
+import MessagePage from '../pages/MessagePage';
 
 function Router() {
   const state = useSelector((state) => state.auth);
@@ -26,6 +27,10 @@ function Router() {
           <Route
             path="/specialists/:id/rating-and-review"
             element={<SpecialistRatingsAndReviewsPage />}
+          />
+          <Route
+            path="/:userId/message/thread/:chatToken"
+            element={<MessagePage />}
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
