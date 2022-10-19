@@ -56,7 +56,7 @@ function LoginForm() {
 
   return (
     <div className="flex flex-col gap-4">
-      <form className="flex flex-col gap-4" onClick={handleSubmitLogin}>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmitLogin}>
         <div>
           <input
             id="email"
