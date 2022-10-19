@@ -1,17 +1,10 @@
 import { Language } from '../../components/icons';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
-import Modal from '../../components/ui/Modal';
-import LoginForm from '../../features/auth/LoginForm';
-import RegisterForm from '../../features/auth/RegisterForm';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { showModalLogin, showModalRegister } from '../../reduxStore/AuthSlice';
 
 function UserMenuDropdown({ open, onClose, Ele }) {
-  // const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  // const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-
-  const state = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const dropdownEl = useRef();
@@ -32,7 +25,7 @@ function UserMenuDropdown({ open, onClose, Ele }) {
     <>
       <div
         id="dropdown"
-        className={`animate-fadeOpen z-10 w-44 bg-white rounded-xl divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[12rem] ml-[5rem] p-1 ${
+        className={`animate-fadeOpen z-10 w-44 bg-white rounded-xl divide-y divide-gray-100 shadow-xl dark:bg-gray-700 absolute mt-[12rem] ml-[72.6rem] p-1 ${
           open ? '' : 'hidden'
         }`}
         ref={dropdownEl}
@@ -73,22 +66,6 @@ function UserMenuDropdown({ open, onClose, Ele }) {
           </li>
         </ul>
       </div>
-
-      {/* <Modal
-        title="Register"
-        modalOpen={state.isRegisterModalOpen}
-        onModalClose={() => dispatch(showModalRegister(false))}
-      >
-        <RegisterForm />
-      </Modal>
-
-      <Modal
-        title="Login"
-        modalOpen={state.isLoginModalOpen}
-        onModalClose={() => dispatch(showModalLogin(false))}
-      >
-        <LoginForm />
-      </Modal> */}
     </>
   );
 }

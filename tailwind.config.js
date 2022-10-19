@@ -30,6 +30,9 @@ module.exports = {
         fadeIn: 'fadeIn 1s',
         fadeOpen: 'fadeOpen 1s',
       },
+      boxShadow: {
+        allSides: '0 5px 20px 0px rgba(0,0,0,0.3)',
+      },
     },
   },
   plugins: [require('flowbite/plugin')],

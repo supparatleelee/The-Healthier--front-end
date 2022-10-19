@@ -9,18 +9,24 @@ import QuestionTwo from '../pages/userPersonalInformation/QuestionTwo';
 import QuestionFour from '../pages/userPersonalInformation/QuestionFour';
 import SurveyLayout from '../layouts/surveyHeader/SurveyLayout';
 import HomePage from '../pages/HomePage';
+import SpecialistProfilePage from '../pages/SpecialistProfilePage';
+import SpecialistRatingsAndReviewsPage from '../pages/SpecialistRatingsAndReviewsPage';
 
 function Router() {
   const state = useSelector((state) => state.auth);
   const user = state.userInfo;
   const userPI = 1;
-  // const user = 0;
 
   return (
     <Routes>
       {user ? (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/specialists/:id" element={<SpecialistProfilePage />} />
+          <Route
+            path="/specialists/:id/rating-and-review"
+            element={<SpecialistRatingsAndReviewsPage />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       ) : (

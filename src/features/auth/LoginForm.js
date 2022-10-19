@@ -87,7 +87,7 @@ function LoginForm() {
         </button>
       </form>
 
-      <p className="forget-password underline inline ml-96 text-[14px]">
+      <p className="forget-password underline inline ml-[79%] text-[14px]">
         Forget Password
       </p>
 

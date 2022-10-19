@@ -118,7 +118,7 @@ function RegisterForm() {
         </button>
       </form>
 
-      <p className="forget-password inline text-[14px]">
+      <p className="forget-password inline text-[14px] text-center">
         By clicking "Continue", I agree to The Healthier's{' '}
         <span className="underline">Privacy Policy</span>.
       </p>
