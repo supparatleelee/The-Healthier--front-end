@@ -7,6 +7,7 @@ import QuestionThree from '../pages/userPersonalInformation/QuestionThree';
 import QuestionTwo from '../pages/userPersonalInformation/QuestionTwo';
 import QuestionFour from '../pages/userPersonalInformation/QuestionFour';
 import SurveyLayout from '../layouts/surveyHeader/SurveyLayout';
+import HomePage from '../pages/HomePage';
 
 function Router() {
   let user = 1;
@@ -16,7 +17,7 @@ function Router() {
     <Routes>
       {user ? (
         <Route path="/" element={<HeaderLayout />}>
-          {/* Homepage */}
+          <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       ) : (
@@ -35,7 +36,7 @@ function Router() {
         </Route>
       ) : (
         <Route path="/" element={<HeaderLayout />}>
-          {/* Homepage */}
+          <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       )}
