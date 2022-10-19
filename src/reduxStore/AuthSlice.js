@@ -58,13 +58,10 @@ export const thunkSignup = (registerInfo, init) => async (dispatch) => {
 
 export const thunkGooglelogin = (tokenId) => async (dispatch) => {
   try {
-<<<<<<< HEAD
-    const res = await authService.login(loginInfo);
-=======
+   
     dispatch(loading(true));
     const res = await authService.googleLogin(tokenId);
     toastDisplaySuccess('success');
->>>>>>> register
     addAccessToken(res.data.token);
     const user = await authService.getMe();
     dispatch(showUser(user.data.user));
