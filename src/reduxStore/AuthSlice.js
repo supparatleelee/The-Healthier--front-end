@@ -83,6 +83,15 @@ export const thunkLogin = (data, init) => async (dispatch) => {
   }
 };
 
+export const thunkUpdateUser = (updatedValue) => async (dispatch) => {
+  try {
+    const user = await userService.updateUser(updatedValue);
+    dispatch(showUser(user.data.user));
+  } catch (err) {
+    throw err;
+  }
+};
+
 export default authSlice.reducer;
 
 export { showUser, showModalRegister, showModalLogin };
