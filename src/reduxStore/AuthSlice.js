@@ -18,7 +18,6 @@ const authSlice = createSlice({
   },
 });
 
-console.log(authSlice.actions);
 const { showUser } = authSlice.actions;
 
 export const thunkSignup = (registerInfo) => async (dispatch) => {

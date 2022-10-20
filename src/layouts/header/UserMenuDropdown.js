@@ -6,7 +6,6 @@ import LoginForm from '../../features/auth/LoginForm';
 import RegisterForm from '../../features/auth/RegisterForm';
 
 function UserMenuDropdown({ open, onClose, Ele }) {
-  console.log(Ele);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
