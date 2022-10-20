@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import * as authService from '../api/authApi';
 import toastDisplayFailed from '../Toast/toastDisplayFailed';
 import toastDisplaySuccess from '../Toast/toastDisplaySuccess';
@@ -8,13 +9,13 @@ import { loading } from './LoadingSlice';
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    userInfo: null,
+    userInfo: {},
     isLoginModalOpen: false,
     isRegisterModalOpen: false,
   },
   reducers: {
     showUser: (state, action) => {
-      state.userInfo = { ...action.payload };
+      state.userInfo = action.payload;
     },
     showModalLogin: (state, action) => {
       state.isLoginModalOpen = action.payload;
