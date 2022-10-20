@@ -12,6 +12,8 @@ import HomePage from '../pages/HomePage';
 import SpecialistProfilePage from '../pages/SpecialistProfilePage';
 import SpecialistRatingsAndReviewsPage from '../pages/SpecialistRatingsAndReviewsPage';
 import MessagePage from '../pages/MessagePage';
+import AccountPage from '../pages/AccountPage';
+import PackagePage from '../pages/PackagePage';
 
 function Router() {
   const state = useSelector((state) => state.auth);
@@ -32,6 +34,8 @@ function Router() {
             path="/:userId/message/thread/:chatToken"
             element={<MessagePage />}
           />
+          <Route path="/account/:userId" element={<AccountPage />} />
+          <Route path="/account/:userId/package" element={<PackagePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       ) : (
