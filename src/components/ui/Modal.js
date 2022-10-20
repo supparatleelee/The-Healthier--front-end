@@ -4,8 +4,14 @@ function Modal({ title, children, modalOpen, onModalClose }) {
   return (
     <>
       {modalOpen && (
-        <div className="modal-bg fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-60 z-[50]">
-          <div className="modal-container fixed right-[28vw] top-[8vh] w-[40%] bg-white rounded-xl p-6 z-[100]">
+        <div
+          className="modal-bg fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-60 z-[50]"
+          onClick={onModalClose}
+        >
+          <div
+            className="modal-container fixed right-[28vw] top-[8vh] w-[40%] bg-white rounded-xl p-6 z-[100]"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="modal-header flex justify-between items-center pb-3">
               <div onClick={onModalClose}>
                 <CancleDark />
