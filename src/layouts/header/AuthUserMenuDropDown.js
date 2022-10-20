@@ -32,6 +32,7 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
       >
         <li>
           <Link
+            to="/account/1"
             type="button"
             className="font-semibold inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
