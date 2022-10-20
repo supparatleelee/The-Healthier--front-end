@@ -57,7 +57,6 @@ const validateLogin = ({ email, password }) => {
   const error = {};
 
   if (validator.isEmpty(email.trim())) {
-    console.log('Email');
     error.email = 'Email is require';
   }
 

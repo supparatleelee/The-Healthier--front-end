@@ -23,7 +23,7 @@ function LoginForm() {
     const loginError = validateLogin(dataLogin);
 
     if (loginError) {
-      let [key, value] = Object.entries(loginError)[0];
+      let [, value] = Object.entries(loginError)[0];
       return toastDisplayFailed(value);
     }
 
@@ -37,7 +37,6 @@ function LoginForm() {
   const handleCallbackResponse = async (response) => {
     // console.log('JWT token :' + response.credential);
     const tokenId = response.credential;
-    // console.log(tokenId);
     dispatch(thunkGooglelogin({ tokenId: tokenId }));
   };
 

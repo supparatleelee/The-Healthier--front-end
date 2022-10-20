@@ -24,7 +24,7 @@ function Router() {
 
   return (
     <Routes>
-      {user ? (
+      {user?.id ? (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/specialists/:id" element={<SpecialistProfilePage />} />

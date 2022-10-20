@@ -2,8 +2,16 @@ import { Logout } from '../../components/icons';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { loading } from '../../reduxStore/LoadingSlice';
+import { removeAccessToken } from '../../utils/localStorage';
+import { showUser } from '../../reduxStore/AuthSlice';
+import toastDisplayFailed from '../../Toast/toastDisplayFailed';
+
 function AuthUserMenuDropDown({ open, onClose, Ele }) {
   const dropdownEl = useRef();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -16,6 +24,18 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [onClose, Ele]);
+
+  const handleLogout = () => {
+    try {
+      dispatch(loading(true));
+      removeAccessToken();
+      dispatch(showUser({}));
+    } catch (error) {
+      toastDisplayFailed(error?.response?.data?.message);
+    } finally {
+      dispatch(loading(false));
+    }
+  };
 
   return (
     <div
@@ -69,7 +89,9 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
             className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             <Logout />
-            <span className="ml-2">Log Out</span>
+            <span className="ml-2" onClick={handleLogout}>
+              Log Out
+            </span>
           </Link>
         </li>
       </ul>

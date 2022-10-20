@@ -6,7 +6,7 @@ function Container({ children }) {
 
   return (
     <>
-      {user ? (
+      {user?.id ? (
         <div className="w-screen inline-block mt-28">{children}</div>
       ) : (
         <div className="w-screen inline-block">{children}</div>

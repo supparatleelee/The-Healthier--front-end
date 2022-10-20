@@ -18,7 +18,7 @@ function App() {
           await dispatch(thunkGetMe());
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchMe();
