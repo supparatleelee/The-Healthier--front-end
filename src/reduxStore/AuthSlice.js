@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import * as authService from '../api/authApi';
+import * as userService from '../api/userApi';
 import {
   addAccessToken,
   getAccessToken,
@@ -17,6 +18,8 @@ const authSlice = createSlice({
     },
   },
 });
+
+const { showUser } = authSlice.actions;
 
 export const thunkSignup = (registerInfo) => async (dispatch) => {
   try {
@@ -42,6 +45,14 @@ export const thunkLogin = (loginInfo) => async (dispatch) => {
   }
 };
 
+export const thunkUpdateUser = (updatedValue) => async (dispatch) => {
+  try {
+    const user = await userService.updateUser(updatedValue);
+    dispatch(showUser(user.data.user));
+  } catch (err) {
+    throw err;
+  }
+};
+
 export default authSlice.reducer;
-const { userInfo } = authSlice.actions;
-export { userInfo };
+export { showUser };
