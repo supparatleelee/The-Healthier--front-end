@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import * as authService from '../api/authApi';
+import * as userService from '../api/userApi';
 import toastDisplayFailed from '../Toast/toastDisplayFailed';
 import toastDisplaySuccess from '../Toast/toastDisplaySuccess';
 import { addAccessToken } from '../utils/localStorage';
