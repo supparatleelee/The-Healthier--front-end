@@ -21,8 +21,9 @@ function App() {
         // console.log(err);
       }
     };
+    console.log('KUY');
     fetchMe();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

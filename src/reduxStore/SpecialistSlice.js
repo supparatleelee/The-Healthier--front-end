@@ -19,16 +19,16 @@ const specialistSlice = createSlice({
           item.description
             .toLowerCase()
             .includes(action.payload.toLowerCase()) ||
-          item.Expertise.some((value) => {
-            value.name.toLowerCase().includes(action.payload.toLowerCase());
-          })
+          item.Expertise.some((value) =>
+            value.name.toLowerCase().includes(action.payload.toLowerCase())
+          )
       );
       state.searchedSpecialist = [...searchedSpecialist];
     },
   },
 });
 
-const { searchedSpecialist, showSpecialist } = authSlice.actions;
+const { searchedSpecialist, showSpecialist } = specialistSlice.actions;
 
 export const thunkGetSpecialists = () => async (dispatch) => {
   try {

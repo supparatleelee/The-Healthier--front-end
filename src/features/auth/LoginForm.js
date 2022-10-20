@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { GoogleLogo } from '../../components/icons';
 import { thunkGooglelogin, thunkLogin } from '../../reduxStore/AuthSlice';
@@ -34,11 +34,14 @@ function LoginForm() {
     );
   };
 
-  const handleCallbackResponse = async (response) => {
-    // console.log('JWT token :' + response.credential);
-    const tokenId = response.credential;
-    dispatch(thunkGooglelogin({ tokenId: tokenId }));
-  };
+  const handleCallbackResponse = useCallback(
+    async (response) => {
+      // console.log('JWT token :' + response.credential);
+      const tokenId = response.credential;
+      dispatch(thunkGooglelogin({ tokenId: tokenId }));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     /* global google */
@@ -51,7 +54,7 @@ function LoginForm() {
       theme: 'outline',
       size: 'large',
     });
-  }, []);
+  }, [handleCallbackResponse]);
 
   return (
     <div className="flex flex-col gap-4">
