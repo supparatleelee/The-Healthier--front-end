@@ -29,7 +29,7 @@ function YourSpecialistItem() {
 
       <div className="buttons flex gap-3 mt-5">
         <button className="bg-primary pt-2 pb-2 pl-24 pr-24 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]">
-          <Link to="/specialists/1">See Your Sessions</Link>
+          <Link to="/specialist/1/sessions">See Your Sessions</Link>
         </button>
         <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium">
           Message

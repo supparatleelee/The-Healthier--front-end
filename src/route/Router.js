@@ -16,6 +16,8 @@ import MessagePage from '../pages/MessagePage';
 import AccountPage from '../pages/AccountPage';
 import PackagePage from '../pages/PackagePage';
 import YourSpecialistPage from '../pages/YourSpecialistPage';
+import SpecialistSessions from '../pages/SpecialistSessions';
+import SessionPlaylistPage from '../pages/SessionPlaylistPage';
 
 function Router() {
   const state = useSelector((state) => state.auth);
@@ -42,6 +44,14 @@ function Router() {
           <Route
             path="account/:userId/your-specialists"
             element={<YourSpecialistPage />}
+          />
+          <Route
+            path="specialist/:specialistId/sessions"
+            element={<SpecialistSessions />}
+          />
+          <Route
+            path="specialist/:specialistId/sessions/:sessionId"
+            element={<SessionPlaylistPage />}
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
