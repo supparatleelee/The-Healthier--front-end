@@ -1,8 +1,9 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CancleDark } from '../../components/icons';
 import Area from './Area';
 
-function SpecialistItem() {
+function SpecialistItem({ firstName, lastName, description, area }) {
   return (
     <div className="bg-white w-[49%] rounded-xl shadow-2xl mb-3 p-8">
       <div className="specialist-details flex gap-3 w-full">
@@ -15,16 +16,14 @@ function SpecialistItem() {
         </div>
 
         <div className="right-div flex flex-col gap-5 w-[70%]">
-          <h1 className="font-semibold">Alex Samethan</h1>
+          <h1 className="font-semibold">{firstName + ' ' + lastName}</h1>
           <div className="areas flex gap-3">
-            <Area />
-            <Area />
-            <Area />
+            {/* {area.map((item, index) => {
+              <Area key={index} area={item} />;
+            })} */}
+            <Area area={area} />
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <p>{description}</p>
         </div>
       </div>
 

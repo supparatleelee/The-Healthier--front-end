@@ -1,10 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-  searchedSpecialist,
-  thunkGetSpecialists,
-} from '../../reduxStore/SpecialistSlice';
+import { thunkGetSpecialists } from '../../reduxStore/SpecialistSlice';
 import SearchCategoriesDropdown from './SearchCategoriesDropdown';
 
 function Search() {
@@ -18,8 +15,8 @@ function Search() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate('/search-result');
-    dispatch(thunkGetSpecialists(search));
+
+    dispatch(thunkGetSpecialists(search, navigate));
   };
 
   return (
