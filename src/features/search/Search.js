@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   searchedSpecialist,
   thunkGetSpecialists,
@@ -11,37 +12,16 @@ function Search() {
   const onClose = useCallback(() => setIsOpen(false), []);
   const Ele = useRef();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.specialist);
   const [search, setSearch] = useState('');
 
-  //fetch
-  // useEffect(() => {
-  //   const queryString = `?title=${search}&completed=${status}&sort=${sort}&limit=${pagelimit}&page=${currentPage}`;
+  const navigate = useNavigate();
 
-  //   const timeId = setTimeout(() => {
-  //     props.fetchTodos(queryString);
-  //   }, 500);
-
-  //   return () => clearTimeout(timeId);
-  // }, [search]);
-
-  // const fetchTodos = async (queryString = "") => {
-  //   try {
-  //     const res = await axios.get("http://localhost:8080/todos" + queryString);
-  //     // const res = await axios.get(url);
-  //     setTodos(res.data.todos);
-  //     setTotal(res.data.total);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   const handleSearch = (e) => {
     e.preventDefault();
+    navigate('/search-result');
     dispatch(thunkGetSpecialists());
 
     dispatch(searchedSpecialist(search));
-    console.log(search);
-    console.log(state?.searchedSpecialist);
   };
 
   return (
