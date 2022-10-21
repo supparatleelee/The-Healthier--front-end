@@ -18,17 +18,19 @@ import PackagePage from '../pages/PackagePage';
 import YourSpecialistPage from '../pages/YourSpecialistPage';
 import SpecialistSessions from '../pages/SpecialistSessions';
 import SessionPlaylistPage from '../pages/SessionPlaylistPage';
+import SearchResult from '../pages/SearchResult';
 
 function Router() {
   const state = useSelector((state) => state.auth);
   const user = state.userInfo;
   const userPI = 1;
-  console.log(user?.id, '============================');
+
   return (
     <Routes>
       {user?.id ? (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/search-result" element={<SearchResult />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/specialists/:id" element={<SpecialistProfilePage />} />
           <Route
