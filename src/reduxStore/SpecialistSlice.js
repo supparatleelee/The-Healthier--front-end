@@ -12,34 +12,44 @@ const specialistSlice = createSlice({
       state.specialists = [...action.payload];
     },
     searchedSpecialist: (state, action) => {
-      console.log(state.specialists);
+      state.specialists = [...action.payload.specialists];
       const searchedSpecialist = state.specialists?.filter(
         (item) =>
-          item.area.toLowerCase().includes(action.payload?.toLowerCase()) ||
-          item.gender.toLowerCase().includes(action.payload.toLowerCase()) ||
-          item.fistName.toLowerCase().includes(action.payload.toLowerCase()) ||
+          item.area
+            .toLowerCase()
+            .includes(action.payload.search?.toLowerCase()) ||
+          item.gender
+            .toLowerCase()
+            .includes(action.payload.search?.toLowerCase()) ||
+          item.firstName
+            .toLowerCase()
+            .includes(action.payload.search?.toLowerCase()) ||
           item.description
             .toLowerCase()
-            .includes(action.payload.toLowerCase()) ||
-          item.Expertise.some((value) =>
-            value.name.toLowerCase().includes(action.payload.toLowerCase())
+            .includes(action.payload.search?.toLowerCase()) ||
+          item.Expertises.some((value) =>
+            value.name
+              .toLowerCase()
+              .includes(action.payload.search?.toLowerCase())
           )
       );
+
       state.searchedSpecialist = [...searchedSpecialist];
-      console.log(state.searchedSpecialist);
     },
   },
 });
 
 const { searchedSpecialist, showSpecialist } = specialistSlice.actions;
 
-export const thunkGetSpecialists = () => async (dispatch) => {
+export const thunkGetSpecialists = (search) => async (dispatch) => {
   try {
     const specialists = await specialistService.getSpecialists();
 
-    dispatch(showSpecialist(specialists.data.specialists));
+    // dispatch(showSpecialist(specialists.data.specialists));
 
-    // dispatch(searchedSpecialist(search));
+    dispatch(
+      searchedSpecialist({ search, specialists: specialists.data.specialists })
+    );
   } catch (err) {
     toastDisplayFailed(err?.response?.data?.message);
   }
