@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+
 import { MenuWhite } from '../../components/icons';
 import AuthUserMenuDropDown from './AuthUserMenuDropDown';
 
@@ -11,6 +12,7 @@ function AuthUserMenu() {
     <div>
       <button className="user-menu-container flex items-center">
         <span className="mr-5">Become a Specialist</span>
+
         <div
           onClick={() => setIsOpen((prev) => !prev)}
           ref={Ele}
@@ -22,7 +24,7 @@ function AuthUserMenu() {
               height="28px"
               width="28px"
               src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
-              alt="profile-image"
+              alt="profile-img"
             />
           </div>
         </div>

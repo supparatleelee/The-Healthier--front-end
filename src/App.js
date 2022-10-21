@@ -15,13 +15,12 @@ function App() {
     const fetchMe = async () => {
       try {
         if (getAccessToken()) {
-          await dispatch(thunkGetMe());
+          dispatch(thunkGetMe());
         }
       } catch (err) {
         // console.log(err);
       }
     };
-    console.log('KUY');
     fetchMe();
   }, [dispatch]);
 

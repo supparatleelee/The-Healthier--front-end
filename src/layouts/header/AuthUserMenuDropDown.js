@@ -73,8 +73,9 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
           </Link>
         </li>
         <li>
+          {/* to = /1/message/thread/C-tasz2s */}
           <Link
-            to="/1/message/thread/C-tasz2s"
+            to="/chat"
             className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             Messages

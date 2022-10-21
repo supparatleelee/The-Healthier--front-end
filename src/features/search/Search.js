@@ -1,13 +1,51 @@
 import { useCallback, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  searchedSpecialist,
+  thunkGetSpecialists,
+} from '../../reduxStore/SpecialistSlice';
 import SearchCategoriesDropdown from './SearchCategoriesDropdown';
 
 function Search() {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = useCallback(() => setIsOpen(false), []);
   const Ele = useRef();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.specialist);
+  const [search, setSearch] = useState('');
+
+  //fetch
+  // useEffect(() => {
+  //   const queryString = `?title=${search}&completed=${status}&sort=${sort}&limit=${pagelimit}&page=${currentPage}`;
+
+  //   const timeId = setTimeout(() => {
+  //     props.fetchTodos(queryString);
+  //   }, 500);
+
+  //   return () => clearTimeout(timeId);
+  // }, [search]);
+
+  // const fetchTodos = async (queryString = "") => {
+  //   try {
+  //     const res = await axios.get("http://localhost:8080/todos" + queryString);
+  //     // const res = await axios.get(url);
+  //     setTodos(res.data.todos);
+  //     setTotal(res.data.total);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(thunkGetSpecialists());
+
+    dispatch(searchedSpecialist(search));
+    console.log(search);
+    console.log(state?.searchedSpecialist);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSearch}>
       <div className="flex" ref={Ele}>
         <button
           id="dropdown-button"
@@ -37,9 +75,11 @@ function Search() {
           <input
             type="search"
             id="search-dropdown"
+            name="search"
             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-[#B3683C] focus:border-[#B3683C] dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-[#B3683C]"
             placeholder="Search..."
-            required=""
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
           <button
             type="submit"

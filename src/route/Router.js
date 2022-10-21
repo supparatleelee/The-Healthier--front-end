@@ -21,12 +21,13 @@ function Router() {
   const state = useSelector((state) => state.auth);
   const user = state.userInfo;
   const userPI = 1;
-
+  console.log(user?.id, '============================');
   return (
     <Routes>
       {user?.id ? (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/chat" element={<ChatPage />} />
           <Route path="/specialists/:id" element={<SpecialistProfilePage />} />
           <Route
             path="/specialists/:id/rating-and-review"
@@ -48,7 +49,6 @@ function Router() {
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="*" element={<Navigate to="/" />} />
-          <Route path="/chat" element={<ChatPage />} />
         </Route>
       )}
 

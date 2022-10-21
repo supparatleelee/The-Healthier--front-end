@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SpecialistItem from '../features/recommendedSpecialists/SpecialistItem';
 
 function HomePage() {
