@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import Area from '../recommendedSpecialists/Area';
 
 function SpecialistDetails() {
+  const navigate = useNavigate();
+
   return (
     <div className=" h-62 flex justify-between pt-6 ml-[35px] mr-[50px] pb-10">
       <div className="left-div">
@@ -22,7 +25,10 @@ function SpecialistDetails() {
         <p>Course: Burn Fat | Coure Duration: 30 days</p>
 
         <div className="buttons flex gap-3">
-          <button className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]">
+          <button
+            className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]"
+            onClick={() => navigate('/1/message/thread/mamas-sds')}
+          >
             Message
           </button>
           <div className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3">
