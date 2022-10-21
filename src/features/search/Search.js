@@ -19,9 +19,7 @@ function Search() {
   const handleSearch = (e) => {
     e.preventDefault();
     navigate('/search-result');
-    dispatch(thunkGetSpecialists());
-
-    dispatch(searchedSpecialist(search));
+    dispatch(thunkGetSpecialists(search));
   };
 
   return (
