@@ -15,6 +15,8 @@ module.exports = {
       },
       backgroundImage: {
         'landing-page': "url('/src/assets/images/landing-page-bg-2.png')",
+        'specialist-landing-page':
+          "url('/src/assets/images/specialist-landing-page-bg.png')",
       },
       keyframes: {
         fadeIn: {
