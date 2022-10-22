@@ -23,6 +23,8 @@ import BecomeASpecialistPage from '../pages/BecomeASpecialistPage';
 import SpecialistSideNavLayout from '../layouts/specialistSideNav/SpecialistSideNavLayout';
 import SpecialistHeaderLayout from '../layouts/specialistHeader/SpecialistHeaderLayout';
 import SpecialistVideoPage from '../pages/SpecialistVideoPage';
+import SpecialistClientPage from '../pages/SpecialistClientPage';
+import SessionController from '../pages/SessionController';
 
 function Router() {
   const state = useSelector((state) => state.auth);
@@ -91,6 +93,14 @@ function Router() {
         <Route path="/" element={<SpecialistSideNavLayout />}>
           <Route path="/" element={<SpecialistHeaderLayout />}>
             <Route path="/specialist-view" element={<SpecialistVideoPage />} />
+            <Route
+              path="/specialist-view/clients"
+              element={<SpecialistClientPage />}
+            />
+            <Route
+              path="/specialist-view/clients/:userId"
+              element={<SessionController />}
+            />
           </Route>
         </Route>
       ) : (

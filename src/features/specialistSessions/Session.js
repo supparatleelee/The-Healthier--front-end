@@ -4,7 +4,6 @@ import SessionVideo from './SessionVideo';
 
 function Session() {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
 
   return (
     <div className="session-section">
