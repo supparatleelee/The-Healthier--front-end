@@ -1,10 +1,9 @@
 import { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { MenuWhite } from '../../components/icons';
-import AuthUserMenuDropDown from './AuthUserMenuDropDown';
+import SpecialistUserMenuDropDown from './SpecialistUserMenuDropDown';
 
-function AuthUserMenu() {
+function SpecialistUserMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = useCallback(() => setIsOpen(false), []);
   const Ele = useRef();
@@ -14,8 +13,8 @@ function AuthUserMenu() {
   return (
     <div>
       <button className="user-menu-container flex items-center">
-        <span className="mr-5" onClick={() => navigate('/become-a-specialist')}>
-          Become a Specialist
+        <span className="mr-5" onClick={() => navigate('/')}>
+          Switch to the Regular User view
         </span>
 
         <div
@@ -34,9 +33,9 @@ function AuthUserMenu() {
           </div>
         </div>
       </button>
-      <AuthUserMenuDropDown open={isOpen} onClose={onClose} Ele={Ele} />
+      <SpecialistUserMenuDropDown open={isOpen} onClose={onClose} Ele={Ele} />
     </div>
   );
 }
 
-export default AuthUserMenu;
+export default SpecialistUserMenu;

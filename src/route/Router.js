@@ -19,11 +19,16 @@ import YourSpecialistPage from '../pages/YourSpecialistPage';
 import SpecialistSessions from '../pages/SpecialistSessions';
 import SessionPlaylistPage from '../pages/SessionPlaylistPage';
 import SearchResult from '../pages/SearchResult';
+import BecomeASpecialistPage from '../pages/BecomeASpecialistPage';
+import SpecialistSideNavLayout from '../layouts/specialistSideNav/SpecialistSideNavLayout';
+import SpecialistHeaderLayout from '../layouts/specialistHeader/SpecialistHeaderLayout';
+import SpecialistVideoPage from '../pages/SpecialistVideoPage';
 
 function Router() {
   const state = useSelector((state) => state.auth);
   const user = state.userInfo;
   const userPI = 1;
+  const specialist = 1;
 
   return (
     <Routes>
@@ -55,6 +60,10 @@ function Router() {
             path="specialist/:specialistId/sessions/:sessionId"
             element={<SessionPlaylistPage />}
           />
+          <Route
+            path="/become-a-specialist"
+            element={<BecomeASpecialistPage />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       ) : (
@@ -70,6 +79,19 @@ function Router() {
           <Route path="/:id/question-2" element={<QuestionTwo />} />
           <Route path="/:id/question-3" element={<QuestionThree />} />
           <Route path="/:id/question-4" element={<QuestionFour />} />
+        </Route>
+      ) : (
+        <Route path="/" element={<HeaderLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Route>
+      )}
+
+      {user && specialist ? (
+        <Route path="/" element={<SpecialistSideNavLayout />}>
+          <Route path="/" element={<SpecialistHeaderLayout />}>
+            <Route path="/specialist-view" element={<SpecialistVideoPage />} />
+          </Route>
         </Route>
       ) : (
         <Route path="/" element={<HeaderLayout />}>
