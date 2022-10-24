@@ -38,7 +38,9 @@ function Router() {
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/search-result" element={<SearchResult />} />
-          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/chat" element={<MessagePage />} />
+          <Route path="/chat/:id" element={<MessagePage />} />
+
           <Route path="/specialists/:id" element={<SpecialistProfilePage />} />
           <Route
             path="/specialists/:id/rating-and-review"
@@ -66,16 +68,16 @@ function Router() {
             path="/become-a-specialist"
             element={<BecomeASpecialistPage />}
           />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       ) : (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       )}
 
-      {!userPI ? (
+      {/* {!userPI ? (
         <Route path="/" element={<SurveyLayout />}>
           <Route path="/:id/question-1" element={<QuestionOne />} />
           <Route path="/:id/question-2" element={<QuestionTwo />} />
@@ -108,7 +110,7 @@ function Router() {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
-      )}
+      )} */}
     </Routes>
   );
 }
