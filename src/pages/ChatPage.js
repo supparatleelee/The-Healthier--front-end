@@ -9,6 +9,7 @@ console.log(socket);
 function ChatPage() {
   const session = useSelector((state) => state.session);
   const dispatch = useDispatch();
+  const myId = useSelector((state) => state.auth.userInfo.id);
   const [showChat, setShowChat] = useState(false);
   const [username, setUsername] = useState('');
   // const [sessionRoom, setSessionRoom] = useState();
@@ -16,12 +17,13 @@ function ChatPage() {
   // const [specialist, setSpecialist] = useState();
 
   useEffect(() => {
-    socket.connect();
-    dispatch(thunkSession());
-    // setCustomer(session?.sessionInfo?.customerId);
-    // setSpecialist(session?.seesionInfo?.specialistId);
-    // setSessionRoom(session?.sessionInfo?.id);
-    return () => socket.disconnect();
+    // socket.auth = { myId };
+    // socket.connect();
+    // dispatch(thunkSession());
+    // // setCustomer(session?.sessionInfo?.customerId);
+    // // setSpecialist(session?.seesionInfo?.specialistId);
+    // // setSessionRoom(session?.sessionInfo?.id);
+    // return () => socket.disconnect();
   }, []);
 
   // console.log(session);
@@ -37,9 +39,6 @@ function ChatPage() {
     const customer = session?.sessionInfo?.customerId;
     const specialist = session?.sessionInfo?.specialistId;
     const roomNumber = session?.sessionInfo?.id;
-    console.log(customer);
-    console.log(specialist);
-    console.log(roomNumber);
     if (customer || specialist) {
       if (roomNumber) {
         socket.emit('join_room', roomNumber);
