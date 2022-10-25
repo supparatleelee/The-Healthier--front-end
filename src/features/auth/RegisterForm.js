@@ -5,6 +5,10 @@ import { GoogleLogo } from '../../components/icons';
 import { thunkGooglelogin, thunkSignup } from '../../reduxStore/AuthSlice';
 import toastDisplayFailed from '../../Toast/toastDisplayFailed';
 import { validateRegister } from '../../validations/userValidation';
+import {
+  showModalRegister,
+  showModalPersonalInformation,
+} from '../../reduxStore/AuthSlice';
 
 function RegisterForm() {
   const dispatch = useDispatch();
@@ -31,7 +35,11 @@ function RegisterForm() {
       return toastDisplayFailed(value);
     }
 
+    dispatch(showModalRegister(false));
+    dispatch(showModalPersonalInformation(true));
+
     dispatch(thunkSignup(dataRegister, () => setDataRegister(initial)));
+    // dispatch(thunkSignup(dataRegister, () => setDataRegister(initial)));
   };
 
   const handleCallbackResponse = async (response) => {

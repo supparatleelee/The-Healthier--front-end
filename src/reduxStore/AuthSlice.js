@@ -13,6 +13,19 @@ const authSlice = createSlice({
     userInfo: {},
     isLoginModalOpen: false,
     isRegisterModalOpen: false,
+    isPersonalInformationModalOpen: false,
+    userInputInfo: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      gender: '',
+      birthday: '',
+      height: '',
+      weight: '',
+      goal: '',
+    },
   },
   reducers: {
     showUser: (state, action) => {
@@ -24,10 +37,18 @@ const authSlice = createSlice({
     showModalRegister: (state, action) => {
       state.isRegisterModalOpen = action.payload;
     },
+    showModalPersonalInformation: (state, action) => {
+      state.isPersonalInformationModalOpen = action.payload;
+    },
   },
 });
 
-const { showUser, showModalRegister, showModalLogin } = authSlice.actions;
+const {
+  showUser,
+  showModalRegister,
+  showModalLogin,
+  showModalPersonalInformation,
+} = authSlice.actions;
 
 export const thunkGetMe = () => async (dispatch) => {
   const res = await authService.getMe();
@@ -39,9 +60,6 @@ export const thunkSignup = (registerInfo, init) => async (dispatch) => {
     dispatch(loading(true));
     const res = await authService.signup(registerInfo);
     addAccessToken(res.data.token);
-    const user = await authService.getMe();
-    dispatch(showUser(user.data.user));
-    toastDisplaySuccess('register');
     init();
     dispatch(showModalRegister(false));
   } catch (error) {
@@ -85,15 +103,26 @@ export const thunkLogin = (data, init) => async (dispatch) => {
   }
 };
 
-export const thunkUpdateUser = (updatedValue) => async (dispatch) => {
+export const thunkUpdateUser = (updatedValue, init) => async (dispatch) => {
   try {
-    const user = await userService.updateUser(updatedValue);
+    dispatch(loading(true));
+    await userService.updateUser(updatedValue);
+    const user = await authService.getMe();
     dispatch(showUser(user.data.user));
-  } catch (err) {
-    throw err;
+    toastDisplaySuccess('register');
+    init();
+  } catch (error) {
+    toastDisplayFailed(error?.response?.data?.message);
+  } finally {
+    dispatch(loading(false));
   }
 };
 
 export default authSlice.reducer;
 
-export { showUser, showModalRegister, showModalLogin };
+export {
+  showUser,
+  showModalRegister,
+  showModalLogin,
+  showModalPersonalInformation,
+};
