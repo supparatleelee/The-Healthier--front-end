@@ -1,10 +1,15 @@
 import { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AccountWhite, MenuWhite } from '../../components/icons';
+import { AccountWhite, MenuWhite, PersonalInfo } from '../../components/icons';
 import Modal from '../../components/ui/Modal';
 import LoginForm from '../../features/auth/LoginForm';
+import PersonalInformationForm from '../../features/auth/PersonalInformationForm';
 import RegisterForm from '../../features/auth/RegisterForm';
-import { showModalLogin, showModalRegister } from '../../reduxStore/AuthSlice';
+import {
+  showModalLogin,
+  showModalRegister,
+  showModalPersonalInformation,
+} from '../../reduxStore/AuthSlice';
 import UserMenuDropdown from './UserMenuDropdown';
 
 function UserMenu() {
@@ -36,6 +41,14 @@ function UserMenu() {
         onModalClose={() => dispatch(showModalRegister(false))}
       >
         <RegisterForm />
+      </Modal>
+
+      <Modal
+        title="Personal Information"
+        modalOpen={state.isPersonalInformationModalOpen}
+        onModalClose={() => dispatch(showModalPersonalInformation(false))}
+      >
+        <PersonalInformationForm />
       </Modal>
 
       <Modal
