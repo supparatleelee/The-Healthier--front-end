@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CancleDark } from '../../components/icons';
 import Area from './Area';
-import profileImg from '../../assets/images/specialist-profile-1.png';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getSpecialistIndex } from '../../reduxStore/SpecialistSlice';
 
 function SpecialistItem({
@@ -15,6 +14,8 @@ function SpecialistItem({
   index,
 }) {
   const dispatch = useDispatch();
+
+  let isSearchResult = 1;
 
   return (
     <div className="bg-white w-[49%] rounded-xl shadow-2xl mb-3 p-8">
@@ -48,9 +49,16 @@ function SpecialistItem({
         >
           <Link to={`/specialists/${id}`}>See This Specialist Profile</Link>
         </button>
-        <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium">
-          Message
-        </button>
+        {isSearchResult ? (
+          <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium">
+            Message
+          </button>
+        ) : (
+          <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3 font-medium">
+            <CancleDark />
+            Not Interested
+          </button>
+        )}
       </div>
     </div>
   );

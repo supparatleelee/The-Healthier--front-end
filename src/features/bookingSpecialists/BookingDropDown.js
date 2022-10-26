@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import CourseDurationForm from './CourseDurationForm';
-import CourseDuration from './CourseDurationForm';
 
 function BookingDropDown({ open, onClose, Ele, specialistId }) {
   const dropdownEl = useRef();

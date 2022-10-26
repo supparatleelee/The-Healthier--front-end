@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AccountWhite, MenuWhite, PersonalInfo } from '../../components/icons';
+import { AccountWhite, MenuWhite } from '../../components/icons';
 import Modal from '../../components/ui/Modal';
 import LoginForm from '../../features/auth/LoginForm';
 import PersonalInformationForm from '../../features/auth/PersonalInformationForm';

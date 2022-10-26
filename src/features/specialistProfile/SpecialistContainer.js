@@ -18,7 +18,7 @@ function SpecialistContainer({ videos, id }) {
       <hr />
 
       <div className="public-videos pt-10 pb-5 flex flex-wrap justify-start gap-8">
-        {videos.length != 0 ? (
+        {videos.length !== 0 ? (
           videos.map((item, index) => (
             <PublicVideoItem
               videoTitle={item.name}

@@ -1,13 +1,13 @@
 import socket from '../config/socket';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { thunkSession } from '../reduxStore/SessionSlice';
+import { useSelector } from 'react-redux';
+// import { thunkSession } from '../reduxStore/SessionSlice';
 import Chat from '../features/chat/Chat';
 
 function ChatPage() {
   const session = useSelector((state) => state.session);
-  const dispatch = useDispatch();
-  const myId = useSelector((state) => state.auth.userInfo.id);
+  // const dispatch = useDispatch();
+  // const myId = useSelector((state) => state.auth.userInfo.id);
   const [showChat, setShowChat] = useState(false);
   const [username, setUsername] = useState('');
   // const [sessionRoom, setSessionRoom] = useState();
