@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 
-function SpecialistRatingsAndReviews() {
+function SpecialistRatingsAndReviews(id) {
   return (
     <div className="bg-white rounded-xl shadow-allSides mt-8 p-6 animate-fadeIn">
       <div className="menus flex gap-10 pb-5">
         <button type="button" className="font-semibold">
-          <Link to="/specialists/1">Sample Videos</Link>
+          <Link to={`/specialists/${id}`}>Sample Videos</Link>
         </button>
         <button type="button" className="font-semibold text-darkGrey">
-          <Link to="/specialists/1/rating-and-review">Rating & Review</Link>
+          <Link to={`/specialists/${id}/rating-and-review`}>
+            Rating & Review
+          </Link>
         </button>
       </div>
 

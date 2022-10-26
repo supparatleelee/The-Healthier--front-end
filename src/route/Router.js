@@ -18,7 +18,7 @@ import PackagePage from '../pages/PackagePage';
 import YourSpecialistPage from '../pages/YourSpecialistPage';
 import SpecialistSessions from '../pages/SpecialistSessions';
 import SessionPlaylistPage from '../pages/SessionPlaylistPage';
-import SearchResult from '../pages/SearchResult';
+import SearchResultPage from '../pages/SearchResultPage';
 import BecomeASpecialistPage from '../pages/BecomeASpecialistPage';
 import SpecialistSideNavLayout from '../layouts/specialistSideNav/SpecialistSideNavLayout';
 import SpecialistHeaderLayout from '../layouts/specialistHeader/SpecialistHeaderLayout';
@@ -32,12 +32,15 @@ function Router() {
   const userPI = 1;
   const specialist = 1;
 
+  // Need to refactor this page
+  // Bug in Route path='*'
+
   return (
     <Routes>
       {user?.id ? (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/search-result" element={<SearchResult />} />
+          <Route path="/search-result" element={<SearchResultPage />} />
           <Route path="/chat" element={<MessagePage />} />
           <Route path="/chat/:id" element={<MessagePage />} />
 

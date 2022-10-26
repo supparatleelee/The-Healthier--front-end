@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunkSession } from '../reduxStore/SessionSlice';
 import Chat from '../features/chat/Chat';
 
-console.log(socket);
-
 function ChatPage() {
   const session = useSelector((state) => state.session);
   const dispatch = useDispatch();

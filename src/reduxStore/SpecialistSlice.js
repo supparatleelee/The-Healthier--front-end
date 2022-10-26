@@ -8,6 +8,7 @@ const specialistSlice = createSlice({
   initialState: {
     specialists: [],
     searchedSpecialist: [],
+    selectedSpecialistIndex: '',
   },
   reducers: {
     showSpecialist: (state, action) => {
@@ -42,17 +43,17 @@ const specialistSlice = createSlice({
         state: state.searchedSpecialist,
       });
     },
+    getSpecialistIndex: (state, action) => {
+      state.selectedSpecialistIndex = action.payload;
+    },
   },
 });
 
-const { searchedSpecialist, showSpecialist } = specialistSlice.actions;
+const { searchedSpecialist, getSpecialistIndex } = specialistSlice.actions;
 
 export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
   try {
     const specialists = await specialistService.getSpecialists();
-
-    // dispatch(showSpecialist(specialists.data.specialists));
-
     dispatch(
       searchedSpecialist({
         search,
@@ -60,11 +61,10 @@ export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
         navigate,
       })
     );
-    console.log('complete');
   } catch (err) {
     toastDisplayFailed(err?.response?.data?.message);
   }
 };
 
 export default specialistSlice.reducer;
-export { searchedSpecialist };
+export { searchedSpecialist, getSpecialistIndex };

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import SpecialistItem from '../features/recommendedSpecialists/SpecialistItem';
 
-function SearchResult() {
+function SearchResultPage() {
   const { state } = useLocation();
 
   return (
@@ -10,15 +10,17 @@ function SearchResult() {
         Search Results
       </div>
 
-      <div className="flex flex-wrap justify-start gap-3">
+      <div className="flex flex-wrap justify-between gap-3">
         {state.map((item, index) => (
           <SpecialistItem
             key={index}
             firstName={item.firstName}
             lastName={item.lastName}
             description={item.description}
-            // area={[item.area]}
+            id={item.id}
             area={item.area}
+            profileImage={item.profileImage}
+            index={index}
           />
         ))}
       </div>
@@ -26,4 +28,4 @@ function SearchResult() {
   );
 }
 
-export default SearchResult;
+export default SearchResultPage;
