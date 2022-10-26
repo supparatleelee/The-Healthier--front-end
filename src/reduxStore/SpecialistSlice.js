@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useNavigate } from 'react-router-dom';
 
 import * as specialistService from '../api/specialistApi';
 import toastDisplayFailed from '../Toast/toastDisplayFailed';

@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import HeaderLayout from '../layouts/header/HeaderLayout';
-import ChatPage from '../pages/ChatPage';
+// import ChatPage from '../pages/ChatPage';
 import LandingPage from '../pages/LandingPage';
-import QuestionOne from '../pages/userPersonalInformation/QuestionOne';
-import QuestionThree from '../pages/userPersonalInformation/QuestionThree';
-import QuestionTwo from '../pages/userPersonalInformation/QuestionTwo';
-import QuestionFour from '../pages/userPersonalInformation/QuestionFour';
-import SurveyLayout from '../layouts/surveyHeader/SurveyLayout';
+// import QuestionOne from '../pages/userPersonalInformation/QuestionOne';
+// import QuestionThree from '../pages/userPersonalInformation/QuestionThree';
+// import QuestionTwo from '../pages/userPersonalInformation/QuestionTwo';
+// import QuestionFour from '../pages/userPersonalInformation/QuestionFour';
+// import SurveyLayout from '../layouts/surveyHeader/SurveyLayout';
 import HomePage from '../pages/HomePage';
 import SpecialistProfilePage from '../pages/SpecialistProfilePage';
 import SpecialistRatingsAndReviewsPage from '../pages/SpecialistRatingsAndReviewsPage';
@@ -29,8 +29,7 @@ import SessionController from '../pages/SessionController';
 function Router() {
   const state = useSelector((state) => state.auth);
   const user = state.userInfo;
-  const userPI = 1;
-  const specialist = 1;
+  // const userPI = 1;
 
   // Need to refactor this page
   // Bug in Route path='*'
@@ -76,7 +75,7 @@ function Router() {
       ) : (
         <Route path="/" element={<HeaderLayout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       )}
 
@@ -92,9 +91,9 @@ function Router() {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
-      )}
+      )} */}
 
-      {user && specialist ? (
+      {user && user.role === 'Specialist' ? (
         <Route path="/" element={<SpecialistSideNavLayout />}>
           <Route path="/" element={<SpecialistHeaderLayout />}>
             <Route path="/specialist-view" element={<SpecialistVideoPage />} />
@@ -113,7 +112,7 @@ function Router() {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
-      )} */}
+      )}
     </Routes>
   );
 }
