@@ -1,13 +1,14 @@
+import { useSelector } from 'react-redux';
 import Logo from '../header/Logo';
 import SpecialistMenus from './SpecialistMenus';
 
 function SideNav() {
-  let isUserHasVideos = 0; // mockup
+  const videosState = useSelector((state) => state.video.allVideos);
   let isAssignedPage = 0; // mockup - should not write like this,
 
   return (
     <>
-      {isUserHasVideos || isAssignedPage ? (
+      {videosState || isAssignedPage ? (
         <nav className=" w-[25%] pt-[6vh] shadow-allSides z-10 ">
           <Logo />
           <div className="w-[25%] h-screen z-0">
