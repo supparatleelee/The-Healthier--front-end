@@ -1,18 +1,29 @@
 import VideoMenus from './VideoMenus';
 
-function UploadedVideoItem() {
+function UploadedVideoItem({
+  videoTitle,
+  videoPermission,
+  uploadedAt,
+  videoUrl,
+}) {
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-1">
-        <div className="video bg-lightGrey h-[18vh] w-[30vh] text-center mr-5">
-          Video Mock Up
-        </div>
+        <video
+          className="video bg-lightGrey h-[18vh] w-[30vh] text-center mr-5"
+          controls="controls"
+        >
+          <source src={videoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="flex flex-col gap-2 justify-around">
           <div className="flex flex-col gap-1">
-            <h3 className="font-medium text-[20px]">Wram Up 01</h3>
-            <h4 className="font-medium text-darkGrey text-[18px]">Public</h4>
+            <h3 className="font-medium text-[20px]">{videoTitle}</h3>
+            <h4 className="font-medium text-darkGrey text-[18px]">
+              {videoPermission}
+            </h4>
           </div>
-          <p className="text-darkGrey">12 Oct 2022</p>
+          <p className="text-darkGrey">{uploadedAt}</p>
         </div>
       </div>
       <VideoMenus />

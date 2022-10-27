@@ -9,11 +9,11 @@ function SpecialistVideoPage() {
   const state = useSelector((state) => state.uploadVideo);
   const dispatch = useDispatch();
 
-  let isUserHasVideos = 0;
+  const videosState = useSelector((state) => state.video.allVideos);
 
   return (
     <>
-      {isUserHasVideos ? (
+      {videosState ? (
         <div className=" mt-28 w-[75vw]">
           <div className="ml-16 mr-8 mt-36 mb-16 w-[86.6%] flex flex-col gap-10">
             <div className="h-32 bg-white p-6 rounded-xl shadow-allSides flex justify-between items-center">
@@ -29,9 +29,15 @@ function SpecialistVideoPage() {
             <SearchUploadedVideos />
 
             <div className="uploaded-videos-container bg-white p-10 rounded-xl shadow-allSides flex flex-col gap-8">
-              <UploadedVideoItem />
-              <UploadedVideoItem />
-              <UploadedVideoItem />
+              {videosState.map((item, index) => (
+                <UploadedVideoItem
+                  key={index}
+                  videoTitle={item.name}
+                  videoPermission={item.videoStatus}
+                  uploadedAt={item.createdAt}
+                  videoUrl={item.videoFiles}
+                />
+              ))}
             </div>
           </div>
 

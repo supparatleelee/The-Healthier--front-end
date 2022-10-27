@@ -15,8 +15,6 @@ function ChatRoomContent() {
   const [recentMessagep, setRecentMessage] = useState('');
   const { id } = useParams();
   const dispatch = useDispatch();
-  console.log(userMessageData);
-  console.log(chat, '====================');
 
   useEffect(() => {
     dispatch(
