@@ -1,7 +1,19 @@
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Area from '../recommendedSpecialists/Area';
+// import Area from '../recommendedSpecialists/Area';
+// import { thunkSession } from '../../reduxStore/SessionSlice';
 
-function SpecialistDetails() {
+function SpecialistDetails({
+  firstName,
+  lastName,
+  area,
+  expertises,
+  profileImage,
+  courseDuration,
+  followupDate,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -9,30 +21,33 @@ function SpecialistDetails() {
       <div className="left-div">
         <img
           className="rounded-xl"
-          src="https://res.cloudinary.com/waniga/image/upload/v1666025303/Rectangle_45_fbqnqi.png"
+          src={
+            profileImage ||
+            `http://idl.campus.ciencias.ulisboa.pt/wp-content/plugins/idl/img/undefined.png`
+          }
           alt="Specialist-profile"
           height="200px"
           width="200px"
         />
       </div>
       <div className="right-div flex flex-col justify-between w-[80%] gap-3">
-        <h1 className="font-bold text-[24px]">Alex Samethan</h1>
+        <h1 className="font-bold text-[24px]">
+          {firstName} {lastName}
+        </h1>
         <div className="areas flex gap-3">
-          <Area />
-          <Area />
-          <Area />
+          <Area area={area} />
+          {expertises.map((item, index) => (
+            <Area key={index} area={item.name} />
+          ))}
         </div>
-        <p>Course: Burn Fat | Coure Duration: 30 days</p>
+        <p>Course: Burn Fat | Coure Duration: {courseDuration} days</p>
 
         <div className="buttons flex gap-3">
-          <button
-            className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]"
-            onClick={() => navigate('/1/message/thread/mamas-sds')}
-          >
+          <button className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]">
             Message
           </button>
           <div className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3">
-            Next follow-up date: 1 Nov 2022
+            Next follow-up date: {followupDate || 'Undefined'}
           </div>
         </div>
       </div>

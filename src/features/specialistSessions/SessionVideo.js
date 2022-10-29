@@ -7,9 +7,9 @@ function SessionVideo() {
       className="flex mb-5"
       onClick={() => navigate('/specialist/1/sessions/1')}
     >
-      <div className="video bg-lightGrey h-[20vh] w-[35vh] text-center mr-5">
+      <video className="video bg-lightGrey h-[20vh] w-[35vh] text-center mr-5">
         Video Mock Up
-      </div>
+      </video>
 
       <div className="right-div">
         <h3 className="font-medium">[Video's Title]</h3>

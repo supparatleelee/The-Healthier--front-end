@@ -1,3 +1,4 @@
 import axios from '../config/axios';
 
-export const getSessions = () => axios.get('/session');
+export const getSessions = (id) => axios.get(`/session/get/${id}`);
+export const getMySpecialist = () => axios.get('/session/getMySpecialist');

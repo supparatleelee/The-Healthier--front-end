@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { thunkChatData } from '../../reduxStore/ChatSlice';
 import * as chatService from '../../api/chatApi';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 function ChatRoomContent() {
   const chat = useSelector((state) => state.chat);
@@ -42,14 +43,16 @@ function ChatRoomContent() {
   };
 
   return (
-    <div className="p-6 flex flex-col gap-5">
+    <div className="p-6 flex flex-col gap-5 ">
       {/* <p className="text-darkGrey text-center">19 OCT 2022</p> */}
 
-      <div className="flex flex-col gap-3">
-        {allMessage.map((item, index) => (
-          <UserMessageContent key={index} item={item} />
-        ))}
-      </div>
+      <ScrollToBottom>
+        <div className="flex flex-col gap-3 max-h-80">
+          {allMessage.map((item, index) => (
+            <UserMessageContent key={index} item={item} />
+          ))}
+        </div>
+      </ScrollToBottom>
 
       <form
         className="message-input flex flex-col gap-3"
