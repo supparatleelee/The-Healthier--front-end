@@ -9,7 +9,7 @@ function Logo() {
         alt="logo"
         width="300"
         height="110"
-        className="pl-[60px]"
+        className="pl-[60px] fixed top-12"
       />
     </Link>
   );
