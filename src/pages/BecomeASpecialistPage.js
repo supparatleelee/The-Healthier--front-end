@@ -1,7 +1,22 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../components/ui/Modal';
+import SpecialistForm from '../features/auth/SpecialistForm';
+import {
+  showModalLogin,
+  showModalSpecialistForm,
+} from '../reduxStore/AuthSlice';
 
 function BecomeASpecialistPage() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.auth);
+  const handleClickOpenModal = () => {
+    try {
+      dispatch(showModalSpecialistForm(true));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="h-[86vh] w-screen bg-[url('/src/assets/images/specialist-landing-page-bg.png')] bg-no-repeat bg-cover">
@@ -17,11 +32,18 @@ function BecomeASpecialistPage() {
           <div>
             <button
               className="bg-primary text-white pl-[40px] pr-[40px] pt-3 pb-3 rounded-lg hover:bg-secondary"
-              onClick={() => navigate('/specialist-view')}
+              onClick={handleClickOpenModal}
             >
               Get Started
             </button>
           </div>
+          <Modal
+            title="Personal Information"
+            modalOpen={state.isSpecialistFormModalOpen}
+            onModalClose={() => dispatch(showModalSpecialistForm(false))}
+          >
+            <SpecialistForm />
+          </Modal>
         </div>
       </div>
     </div>

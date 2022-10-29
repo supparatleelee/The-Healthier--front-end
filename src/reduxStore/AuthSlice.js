@@ -14,6 +14,7 @@ const authSlice = createSlice({
     isLoginModalOpen: false,
     isRegisterModalOpen: false,
     isPersonalInformationModalOpen: false,
+    isSpecialistFormModalOpen: false,
     userInputInfo: {
       firstName: '',
       lastName: '',
@@ -40,6 +41,9 @@ const authSlice = createSlice({
     showModalPersonalInformation: (state, action) => {
       state.isPersonalInformationModalOpen = action.payload;
     },
+    showModalSpecialistForm: (state, action) => {
+      state.isSpecialistFormModalOpen = action.payload;
+    },
   },
 });
 
@@ -48,6 +52,7 @@ const {
   showModalRegister,
   showModalLogin,
   showModalPersonalInformation,
+  showModalSpecialistForm,
 } = authSlice.actions;
 
 export const thunkGetMe = () => async (dispatch) => {
@@ -125,4 +130,5 @@ export {
   showModalRegister,
   showModalLogin,
   showModalPersonalInformation,
+  showModalSpecialistForm,
 };

@@ -7,6 +7,7 @@ import { loading } from '../../reduxStore/LoadingSlice';
 import { removeAccessToken } from '../../utils/localStorage';
 import { showUser } from '../../reduxStore/AuthSlice';
 import toastDisplayFailed from '../../Toast/toastDisplayFailed';
+import { thunkMySpecialists } from '../../reduxStore/SessionSlice';
 
 function AuthUserMenuDropDown({ open, onClose, Ele }) {
   const dropdownEl = useRef();
@@ -37,6 +38,10 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
     }
   };
 
+  const handleOnClick = () => {
+    dispatch(thunkMySpecialists());
+  };
+
   return (
     <div
       id="dropdown"
@@ -63,6 +68,7 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
           <Link
             to="/account/1/your-specialists"
             className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            onClick={handleOnClick}
           >
             My Specialists
           </Link>

@@ -1,15 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import * as expertisesService from '../api/expertiseApi';
 import * as specialistService from '../api/specialistApi';
 import toastDisplayFailed from '../Toast/toastDisplayFailed';
+import toastDisplaySuccess from '../Toast/toastDisplaySuccess';
 const specialistSlice = createSlice({
   name: 'specialist',
   initialState: {
     specialists: [],
     searchedSpecialist: [],
     selectedSpecialistIndex: '',
+    registerSpecialist: {},
+    expertisesData: [],
+    exData: [],
   },
   reducers: {
+    removeExData: (state, action) => {
+      state.exData = state.exData.filter((item) => item !== action.payload);
+    },
+    setExData: (state, action) => {
+      state.exData = [...state.exData, action.payload];
+    },
+    setRegisterSpecialistData: (state, action) => {
+      state.specialists = [action.payload];
+    },
     showSpecialist: (state, action) => {
       state.specialists = [...action.payload];
     },
@@ -48,7 +61,23 @@ const specialistSlice = createSlice({
   },
 });
 
-const { searchedSpecialist, getSpecialistIndex } = specialistSlice.actions;
+const {
+  searchedSpecialist,
+  getSpecialistIndex,
+  setRegisterSpecialistData,
+  setExData,
+  removeExData,
+} = specialistSlice.actions;
+
+export const thunkRegisterSpecialists = (input) => async () => {
+  try {
+    const res = await specialistService.registerSpecialists(input);
+    toastDisplaySuccess('Registered');
+  } catch (err) {
+    toastDisplayFailed(err.data.message);
+  } finally {
+  }
+};
 
 export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
   try {
@@ -66,4 +95,10 @@ export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
 };
 
 export default specialistSlice.reducer;
-export { searchedSpecialist, getSpecialistIndex };
+export {
+  searchedSpecialist,
+  getSpecialistIndex,
+  setRegisterSpecialistData,
+  setExData,
+  removeExData,
+};
