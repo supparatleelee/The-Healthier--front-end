@@ -38,7 +38,7 @@ function Router() {
     <Routes>
       {user?.id ? (
         <Route path="/" element={<HeaderLayout />}>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" exact element={<HomePage />} />
           <Route path="/search-result" element={<SearchResultPage />} />
           <Route path="/chat" element={<MessagePage />} />
           <Route path="/chat/:id" element={<MessagePage />} />
@@ -95,7 +95,7 @@ function Router() {
 
       {user && user.role === 'Specialist' ? (
         <Route path="/" element={<SpecialistSideNavLayout />}>
-          <Route path="/" element={<SpecialistHeaderLayout />}>
+          <Route path="/" exact element={<SpecialistHeaderLayout />}>
             <Route path="/specialist-view" element={<SpecialistVideoPage />} />
             <Route
               path="/specialist-view/clients"

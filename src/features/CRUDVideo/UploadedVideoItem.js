@@ -5,6 +5,7 @@ function UploadedVideoItem({
   videoPermission,
   uploadedAt,
   videoUrl,
+  videoState,
 }) {
   return (
     <div className="flex justify-between items-center">
@@ -26,7 +27,7 @@ function UploadedVideoItem({
           <p className="text-darkGrey">{uploadedAt}</p>
         </div>
       </div>
-      <VideoMenus />
+      <VideoMenus videoState={videoState} />
     </div>
   );
 }

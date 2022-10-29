@@ -1,12 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { showModalUploadVideo } from '../reduxStore/UploadVideoSlice';
+import {
+  showModalDeleteVideo,
+  showModalEditVideo,
+  showModalUploadVideo,
+} from '../reduxStore/videoSlice';
 import Modal from '../components/ui/Modal';
-import UploadVideoForm from '../features/uploadVideo/UploadVideoForm';
-import SearchUploadedVideos from '../features/uploadVideo/SearchUploadedVideos';
-import UploadedVideoItem from '../features/uploadVideo/UploadedVideoItem';
+import UploadVideoForm from '../features/CRUDVideo/UploadVideoForm';
+import SearchUploadedVideos from '../features/CRUDVideo/SearchUploadedVideos';
+import UploadedVideoItem from '../features/CRUDVideo/UploadedVideoItem';
+import EditVideoForm from '../features/CRUDVideo/EditVideoForm';
+import DeleteVideo from '../features/CRUDVideo/DeleteVideo';
 
 function SpecialistVideoPage() {
-  const state = useSelector((state) => state.uploadVideo);
+  const state = useSelector((state) => state.video);
   const dispatch = useDispatch();
 
   const videosState = useSelector((state) => state.video.allVideos);
@@ -36,6 +42,7 @@ function SpecialistVideoPage() {
                   videoPermission={item.videoStatus}
                   uploadedAt={item.createdAt}
                   videoUrl={item.videoFiles}
+                  videoState={item}
                 />
               ))}
             </div>
@@ -46,7 +53,29 @@ function SpecialistVideoPage() {
             modalOpen={state.isUploadVideoModalOpen}
             onModalClose={() => dispatch(showModalUploadVideo(false))}
           >
-            <UploadVideoForm />
+            <UploadVideoForm
+              onModalClose={() => dispatch(showModalUploadVideo(false))}
+            />
+          </Modal>
+
+          <Modal
+            title="Edit Video"
+            modalOpen={state.isEditVideoModalOpen}
+            onModalClose={() => dispatch(showModalEditVideo(false))}
+          >
+            <EditVideoForm
+              onModalClose={() => dispatch(showModalEditVideo(false))}
+            />
+          </Modal>
+
+          <Modal
+            title="Are you sure?"
+            modalOpen={state.isDeleteVideoModalOpen}
+            onModalClose={() => dispatch(showModalDeleteVideo(false))}
+          >
+            <DeleteVideo
+              onModalClose={() => dispatch(showModalDeleteVideo(false))}
+            />
           </Modal>
         </div>
       ) : (

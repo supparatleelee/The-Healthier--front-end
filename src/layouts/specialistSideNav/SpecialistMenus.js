@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {
   ClientsGrey,
   CommunicationGrey,
@@ -8,19 +8,19 @@ import {
 
 function SpecialistMenus() {
   return (
-    <div className="ml-[88px] pt-10 fixed">
+    <div className="ml-[88px] pt-20 fixed">
       <ul className="text-darkGrey bg-white w-60 flex flex-col gap-3">
         <li className="text-white bg-primary pt-4 pb-4 pl-8 pr-10 rounded-xl hover:shadow-allSides">
-          <Link to="/specialist-view" className="flex gap-3">
+          <NavLink to="/specialist-view" className="flex gap-3">
             <VideoWhite />
             Videos
-          </Link>
+          </NavLink>
         </li>
         <li className="pt-4 pb-4 pl-8 pr-10 rounded-xl hover:shadow-allSides">
-          <Link to="/specialist-view/clients" className="flex gap-3">
+          <NavLink to="/specialist-view/clients" className="flex gap-3">
             <ClientsGrey />
             Clients
-          </Link>
+          </NavLink>
         </li>
         <li className="pt-4 pb-4 pl-8 pr-10 rounded-xl hover:shadow-allSides">
           <Link className="flex gap-3">

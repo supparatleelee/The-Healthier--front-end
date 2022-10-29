@@ -9,7 +9,7 @@ function SideNav() {
   return (
     <>
       {videosState || isAssignedPage ? (
-        <nav className=" w-[25%] pt-[6vh] shadow-allSides z-10 ">
+        <nav className=" w-[25%] pt-[6vh] shadow-allSides z-30">
           <Logo />
           <div className="w-[25%] h-screen z-0">
             <SpecialistMenus />
