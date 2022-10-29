@@ -39,7 +39,7 @@ function Router() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search-result" element={<SearchResult />} />
           <Route path="/chat" element={<MessagePage />} />
-          <Route path="/chat/:id" element={<MessagePage />} />
+          <Route path="/chat/:id" elemen t={<MessagePage />} />
 
           <Route path="/specialists/:id" element={<SpecialistProfilePage />} />
           <Route
@@ -51,7 +51,7 @@ function Router() {
             element={<MessagePage />}
           />
           <Route path="/account/:userId" element={<AccountPage />} />
-          <Route path="/account/:userId/package" element={<PackagePage />} />
+          <Route path="/package" element={<PackagePage />} />
           <Route
             path="account/:userId/your-specialists"
             element={<YourSpecialistPage />}

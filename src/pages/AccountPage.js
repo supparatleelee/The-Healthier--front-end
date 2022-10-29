@@ -27,7 +27,7 @@ function AccountPage() {
         <AccountMenu
           title="Package"
           description="Review your package"
-          path="/account/1/package"
+          path="/package"
         >
           <Package />
         </AccountMenu>

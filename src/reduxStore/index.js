@@ -5,6 +5,7 @@ import loadingReducer from './LoadingSlice';
 import sessionReducer from './SessionSlice';
 import uploadVideoReducer from './UploadVideoSlice';
 import chatReducer from './ChatSlice';
+import paymentReducer from './Payment';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     session: sessionReducer,
     uploadVideo: uploadVideoReducer,
     chat: chatReducer,
+    payment: paymentReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
