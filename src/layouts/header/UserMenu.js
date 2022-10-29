@@ -48,7 +48,9 @@ function UserMenu() {
         modalOpen={state.isPersonalInformationModalOpen}
         onModalClose={() => dispatch(showModalPersonalInformation(false))}
       >
-        <PersonalInformationForm />
+        <PersonalInformationForm
+          onModalClose={() => dispatch(showModalPersonalInformation(false))}
+        />
       </Modal>
 
       <Modal
