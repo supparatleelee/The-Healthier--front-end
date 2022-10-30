@@ -36,7 +36,7 @@ function ClientProfileItem({
           </div>
         </div>
         <div className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3">
-          {courseVideos
+          {courseVideos[0]
             ? `Next Follow Up Date: ${followUpDate}`
             : 'Waiting for your assignments'}
         </div>
