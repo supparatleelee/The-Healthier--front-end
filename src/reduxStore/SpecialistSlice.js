@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import * as expertisesService from '../api/expertiseApi';
 import * as specialistService from '../api/specialistApi';
 import toastDisplayFailed from '../Toast/toastDisplayFailed';
 import toastDisplaySuccess from '../Toast/toastDisplaySuccess';

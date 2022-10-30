@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ExpertiseModal from '../components/ui/ExpertiseModal';
-import Modal from '../components/ui/Modal';
 import SpecialistForm from '../features/auth/SpecialistForm';
 import { showModalSpecialistForm } from '../reduxStore/AuthSlice';
 
