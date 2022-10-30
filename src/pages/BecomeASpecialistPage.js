@@ -1,11 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import ExpertiseModal from '../components/ui/ExpertiseModal';
 import Modal from '../components/ui/Modal';
 import SpecialistForm from '../features/auth/SpecialistForm';
-import {
-  showModalLogin,
-  showModalSpecialistForm,
-} from '../reduxStore/AuthSlice';
+import { showModalSpecialistForm } from '../reduxStore/AuthSlice';
 
 function BecomeASpecialistPage() {
   const dispatch = useDispatch();
@@ -37,13 +35,13 @@ function BecomeASpecialistPage() {
               Get Started
             </button>
           </div>
-          <Modal
-            title="Personal Information"
+          <ExpertiseModal
+            title="Specialist Information"
             modalOpen={state.isSpecialistFormModalOpen}
             onModalClose={() => dispatch(showModalSpecialistForm(false))}
           >
             <SpecialistForm />
-          </Modal>
+          </ExpertiseModal>
         </div>
       </div>
     </div>

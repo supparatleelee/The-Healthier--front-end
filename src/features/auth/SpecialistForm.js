@@ -74,53 +74,73 @@ function SpecialistForm() {
   return (
     <div className="flex flex-col gap-4">
       <form className="flex flex-col gap-4" onSubmit={handleSubmitForm}>
-        <div>
-          <input
+        <div className="flex flex-col gap-2">
+          <label htmlFor="area" className="font-medium mr-3">
+            Area of Expertise
+          </label>
+          {/* ENUM('Nutritionist', 'Physiotherapist', 'Personal Trainer') */}
+          <select
             id="area"
-            type="text"
             className="rounded-xl w-full h-[6.2vh] border-gray-400"
             placeholder="Area Of Expertise"
             name="area"
-            value={dataRegister?.area}
             onChange={changeInput}
-          />
+          >
+            {/* value={dataRegister?.area} */}
+            <option value="">Choose your area of expertise here</option>
+            <option value="Nutritionist">Nutritionist</option>
+            <option value="Physiotherapist">Physiotherapist</option>
+            <option value="Personal Trainer">Personal Trainer</option>
+          </select>
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="year-of-experience" className="font-medium mr-3">
+            Year(s) of Experience
+          </label>
           <input
-            id="years_of_experience"
-            type="text"
+            id="years-of-experience"
+            // หลังบ้านเก็บเป็น datetime ? ที่จริงเก็บเป็น integer แล้วหน้าบ้านเก็บเป็น type="number" น่าจะดีกว่า เพราะ user คงจำวันที่เรื่มทำไม่ได้
+            type="date"
             className="rounded-xl w-full h-[6.2vh] border-gray-400"
             placeholder="Years of experience (Ex: 3 years)"
-            name="years_of_experience"
+            name="years-of-experience"
             value={dataRegister?.years_of_experience}
             onChange={changeInput}
           />
         </div>
-        <div>
-          <input
+        <div className="flex flex-col gap-2">
+          <label htmlFor="description" className="font-medium mr-3">
+            Description
+          </label>
+          <textarea
             id="description"
-            type="text"
-            className="rounded-xl w-full h-[6.2vh] border-gray-400"
+            className="rounded-xl w-full h-[15vh] border-gray-400 resize-none"
             placeholder="Description"
             name="description"
             value={dataRegister?.description}
             onChange={changeInput}
           />
         </div>
-        <div>
-          {expertiseData.map((item) => {
-            return (
-              <div>
-                <input
-                  type="checkbox"
-                  id={item.name}
-                  onChange={expertisesInput}
-                  value={item.id}
-                />
-                <label htmlFor={item.name}>{item.name}</label>
-              </div>
-            );
-          })}
+        <div className="flex flex-col gap-2">
+          <label htmlFor="expertises" className="font-medium mr-3">
+            Expertises
+          </label>
+          <div>
+            {expertiseData.map((item) => {
+              return (
+                <div>
+                  <input
+                    type="checkbox"
+                    id={item.name}
+                    onChange={expertisesInput}
+                    value={item.id}
+                    className="rounded-md mr-3"
+                  />
+                  <label htmlFor={item.name}>{item.name}</label>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <button
           className="bg-primary bg-gradient-to-r from-[#DE8443] to-[#B3683C] rounded-xl h-[6vh] text-white"
