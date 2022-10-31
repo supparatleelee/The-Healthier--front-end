@@ -1,16 +1,17 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SpecialistItem from '../features/recommendedSpecialists/SpecialistItem';
-
+import CalendarDisplay from '../features/calendar/CalendarDisplay';
 function HomePage() {
   const state = useSelector((state) => state.specialist);
 
   return (
     <div className="mt-10 ml-[86px] mr-[100px]">
+      {/* <CalendarDisplay /> */}
+
       <div className="homepage-title  mt-5 mb-2 font-semibold text-[20px]">
         Recommended Specialists For You
       </div>
-
       <div className="recommended-container">
         <div className="recommended-specialist-1">
           <div className="area-title mt-5 text-[18px] font-medium">

@@ -7,6 +7,7 @@ const specialistSlice = createSlice({
   initialState: {
     specialists: [],
     searchedSpecialist: [],
+    recommendedSpecialist: [],
     selectedSpecialistIndex: '',
     registerSpecialist: {},
     expertisesData: [],
@@ -57,6 +58,147 @@ const specialistSlice = createSlice({
     getSpecialistIndex: (state, action) => {
       state.selectedSpecialistIndex = action.payload;
     },
+    recommendedSpecialist: (state, action) => {
+      state.specialists = [...action.payload.specialists];
+      const userInfo = action.payload.userInfo;
+      let matchingExpertise;
+      let recSpecialists = [];
+      switch (userInfo.goals) {
+        case 'Back Pain':
+          matchingExpertise = [
+            'Yoga',
+            'Flexibility Trainning',
+            'Pirates Yoga',
+            'Clinical Electrophysiology',
+          ];
+          break;
+        case 'Neck and Shoulder Ache':
+          matchingExpertise = [
+            'Orthopedics',
+            'Yoga',
+            'Flexibility Trainning',
+            'Pirates Yoga',
+          ];
+          break;
+        case 'Headache':
+          matchingExpertise = ['Yoga', 'Pirates Yoga'];
+          break;
+        case 'Lowerbody Pain':
+          matchingExpertise = [
+            'Yoga',
+            'Clinical Electrophysiology',
+            'Body-weight Trainning',
+            'Sports',
+          ];
+          break;
+        case 'Ready to Play':
+          matchingExpertise = [
+            'Sports',
+            'Body-weight Trainning',
+            'Flexibility Trainning',
+            'Food nutrition',
+            'Clinical Electrophysiology',
+            'Food for convalescents',
+            'Cardiovascular',
+          ];
+          break;
+        case 'After Surgery Recovery':
+          matchingExpertise = [
+            'Geriatrics',
+            'Senior Trainning',
+            'Food for convalescents',
+            'Flexibility Trainning',
+            'Cardiovascular',
+          ];
+          break;
+        case 'Slimming':
+          matchingExpertise = [
+            'HIIT Trainning',
+            'Cardio',
+            'Obese people Trainning',
+            'Boxing',
+            'Aerobic Drance',
+            'Food nutrition',
+            'Body-weight Trainning',
+          ];
+          break;
+        case 'Burn Fat':
+          matchingExpertise = [
+            'HIIT Trainning',
+            'Cardio',
+            'Obese people Trainning',
+            'Boxing',
+            'Aerobic Drance',
+            'Food nutrition',
+            'Body-weight Trainning',
+            'Weight Trainning',
+            'Yoga',
+          ];
+          break;
+        case 'Building Muscle':
+          matchingExpertise = [
+            'HIIT Trainning',
+            'Body-weight Trainning',
+            'Weight Trainning',
+            'Abdominal muscles building',
+            'Boxing',
+            'Muscle Building',
+            'Food nutrition',
+          ];
+          break;
+        case 'Just for Fun':
+          matchingExpertise = [
+            'Sports',
+            'Body-weight Trainning',
+            'Weight Trainning',
+            'Yoga',
+            'Flexibility Trainning',
+            'Kids Trainning',
+            'Pirates Yoga',
+            'Boxing',
+            'Aerobic Drance',
+            'Food nutrition',
+          ];
+          break;
+        case 'Other':
+          matchingExpertise = [
+            'Cardiovascular',
+            'Cardiovascular',
+            'Geriatrics',
+            'Oncology',
+            'Orthopedics',
+            'Sports',
+            'Womens Health',
+            'HIIT Trainning',
+            'Body-weight Trainning',
+            'Weight Trainning',
+            'Yoga',
+            'Cardio',
+            'Cardio',
+            'Senior Trainning',
+            'Kids Trainning',
+            'Pirates Yoga',
+            'Boxing',
+            'Aerobic Drance',
+            'Food nutrition',
+            'Food for Senoir',
+            'Food for convalescents',
+            'Food for allergic people',
+          ];
+          break;
+        default:
+          break;
+      }
+      for (const expertiseName of matchingExpertise) {
+        const reccomendSpecialist = state.specialists?.filter((item) =>
+          item.Expertises.some((value) =>
+            value.name.toLowerCase().includes(expertiseName)
+          )
+        );
+        recSpecialists.push(...reccomendSpecialist);
+      }
+      state.recommendedSpecialist = [...recSpecialists];
+    },
   },
 });
 
@@ -66,6 +208,7 @@ const {
   setRegisterSpecialistData,
   setExData,
   removeExData,
+  recommendedSpecialist,
 } = specialistSlice.actions;
 
 export const thunkRegisterSpecialists = (input) => async () => {
@@ -90,6 +233,20 @@ export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
     );
   } catch (err) {
     console.log(err);
+    toastDisplayFailed(err?.response?.data?.message);
+  }
+};
+
+export const thunkGetRecommendedSpecialist = (userInfo) => async (dispatch) => {
+  try {
+    const specialists = await specialistService.getSpecialists();
+    dispatch(
+      recommendedSpecialist({
+        userInfo,
+        specialists: specialists.data.specialists,
+      })
+    );
+  } catch (err) {
     toastDisplayFailed(err?.response?.data?.message);
   }
 };
