@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Script from 'react-load-script';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import * as paymentService from '../../api/paymentApi';
 
@@ -8,6 +9,9 @@ import toastDisplayFailed from '../../Toast/toastDisplayFailed';
 import toastDisplaySuccess from '../../Toast/toastDisplaySuccess';
 
 function Payment({ currentPrice, id }) {
+  const navigate = useNavigate();
+  const [temp, setTemp] = useState(true);
+
   let OmiseCard;
 
   const handleLoadScript = () => {

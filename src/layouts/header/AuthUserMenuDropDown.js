@@ -40,6 +40,7 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
 
   const handleOnClick = () => {
     dispatch(thunkMySpecialists());
+    onClose();
   };
 
   return (
@@ -60,6 +61,7 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
             to="/account/1"
             type="button"
             className="font-semibold inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            onClick={() => onClose()}
           >
             Account
           </Link>
@@ -83,6 +85,7 @@ function AuthUserMenuDropDown({ open, onClose, Ele }) {
           <Link
             to="/chat"
             className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            onClick={() => onClose()}
           >
             Messages
           </Link>

@@ -34,9 +34,13 @@ function PackageItem({ item }) {
         </div>
 
         <div className="flex flex-col gap-3 text-[18px]">
-          <p>[Feature 1]</p>
-          <p>[Feature 1]</p>
-          <p>[Feature 1]</p>
+          <p>
+            {formatItemName(item).toLowerCase().includes('advance')
+              ? 'Booking 3 Specialist'
+              : formatItemName(item).toLowerCase().includes('intermediate')
+              ? 'Booking 2 Specialists'
+              : 'Booking 1 Specialists'}
+          </p>
         </div>
 
         {/* <button
