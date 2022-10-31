@@ -27,21 +27,22 @@ const specialistSlice = createSlice({
     },
     searchedSpecialist: (state, action) => {
       state.specialists = [...action.payload.specialists];
+
       const searchedSpecialist = state.specialists?.filter(
         (item) =>
-          item.area
+          item?.area
             .toLowerCase()
             .includes(action.payload.search?.toLowerCase()) ||
-          item.gender
+          item?.gender
             .toLowerCase()
             .includes(action.payload.search?.toLowerCase()) ||
-          item.firstName
+          item?.firstName
             .toLowerCase()
             .includes(action.payload.search?.toLowerCase()) ||
-          item.description
+          item?.description
             .toLowerCase()
             .includes(action.payload.search?.toLowerCase()) ||
-          item.Expertises.some((value) =>
+          item?.Expertises.some((value) =>
             value.name
               .toLowerCase()
               .includes(action.payload.search?.toLowerCase())
@@ -49,7 +50,6 @@ const specialistSlice = createSlice({
       );
 
       state.searchedSpecialist = [...searchedSpecialist];
-
       action.payload.navigate('/search-result', {
         state: state.searchedSpecialist,
       });
@@ -89,6 +89,7 @@ export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
       })
     );
   } catch (err) {
+    console.log(err);
     toastDisplayFailed(err?.response?.data?.message);
   }
 };

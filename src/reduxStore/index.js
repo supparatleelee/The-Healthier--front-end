@@ -7,6 +7,7 @@ import chatReducer from './ChatSlice';
 import bookingReducer from './BookingSlice';
 import videoReducer from './videoSlice';
 import sessionVideoReducer from './sessionVideoSlice';
+import paymentReducer from './Payment';
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     bookingSpecialist: bookingReducer,
     video: videoReducer,
     sessionVideo: sessionVideoReducer,
+    payment: paymentReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
