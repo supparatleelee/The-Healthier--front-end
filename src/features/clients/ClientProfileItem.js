@@ -1,4 +1,10 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  setCurrentCustomerCourseVideos,
+  setCurrentCustomer,
+  setCurrentCustomerCourse,
+} from '../../reduxStore/sessionVideoSlice';
 
 function ClientProfileItem({
   firstName,
@@ -8,12 +14,23 @@ function ClientProfileItem({
   courseVideos,
   followUpDate,
   customerId,
+  customerData,
+  courseData,
 }) {
+  const dispatch = useDispatch();
+
+  const onClick = () => {
+    dispatch(setCurrentCustomerCourseVideos(courseVideos));
+    dispatch(setCurrentCustomer(customerData));
+    dispatch(setCurrentCustomerCourse(courseData));
+  };
+
   return (
     <>
       <Link
         to={`/specialist-view/clients/${customerId}`}
         className="flex justify-between items-center"
+        onClick={onClick}
       >
         <div className="flex gap-3">
           <img

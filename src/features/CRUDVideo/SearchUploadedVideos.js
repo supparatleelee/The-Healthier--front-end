@@ -23,7 +23,7 @@ function SearchUploadedVideos() {
           </svg>
         </button>
 
-        <div className="relative w-[400px]">
+        <div className="relative w-[450px]">
           <input
             type="search"
             id="search-dropdown"

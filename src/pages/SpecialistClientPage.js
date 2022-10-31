@@ -21,6 +21,8 @@ function SpecialistClientPage() {
               courseVideos={item.SpecialistVideos}
               followUpDate={item.followUpDate}
               customerId={item.customerId}
+              customerData={item.customer}
+              courseData={item}
             />
           ))}
         </div>
