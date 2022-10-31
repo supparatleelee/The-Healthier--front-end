@@ -1,16 +1,20 @@
-function VideoForClient() {
+function VideoForClient({ title, video, uploadedAt }) {
   return (
-    <button className="flex mb-5">
-      <div className="video bg-lightGrey h-[20vh] w-[35vh] text-center mr-5">
-        Video Mock Up
-      </div>
+    <div className="flex mb-5">
+      <video
+        className="video bg-lightGrey w-[22vw] text-center mr-5"
+        controls="controls"
+      >
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       <div className="right-div">
-        <h3 className="font-medium">[Video's Title]</h3>
+        <h3 className="font-medium">{title}</h3>
 
-        <p className="text-darkGrey text-[14px]">12 Oct 2022</p>
+        <p className="text-darkGrey text-[14px]">{uploadedAt}</p>
       </div>
-    </button>
+    </div>
   );
 }
 
