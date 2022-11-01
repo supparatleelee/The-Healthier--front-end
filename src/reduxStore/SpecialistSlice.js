@@ -13,8 +13,17 @@ const specialistSlice = createSlice({
     registerSpecialist: {},
     expertisesData: [],
     exData: [],
+    pageNavigation: '',
+    currentSpecialist: {},
   },
+
   reducers: {
+    setCurrentSpecialist: (state, action) => {
+      state.currentSpecialist = action.payload;
+    },
+    setPageNavigation: (state, action) => {
+      state.pageNavigation = action.payload;
+    },
     removeExData: (state, action) => {
       state.exData = state.exData.filter((item) => +item !== +action.payload);
     },
@@ -191,14 +200,22 @@ const specialistSlice = createSlice({
           break;
       }
       for (const expertiseName of matchingExpertise) {
-        const reccomendSpecialist = state.specialists?.filter((item) =>
+        var reccomendSpecialist = state.specialists?.filter((item) =>
           item.Expertises.some((value) =>
-            value.name.toLowerCase().includes(expertiseName)
+            value.name.toLowerCase().includes(expertiseName.toLocaleLowerCase())
           )
         );
         recSpecialists.push(...reccomendSpecialist);
       }
-      state.recommendedSpecialist = [...recSpecialists];
+      const filteredArr = recSpecialists.reduce((acc, current) => {
+        const x = acc.find((item) => item.id === current.id);
+        if (!x) {
+          return acc.concat([current]);
+        } else {
+          return acc;
+        }
+      }, []);
+      state.recommendedSpecialist = [...filteredArr];
     },
   },
 });
@@ -210,6 +227,8 @@ const {
   setExData,
   removeExData,
   recommendedSpecialist,
+  setPageNavigation,
+  setCurrentSpecialist,
 } = specialistSlice.actions;
 
 export const thunkCreateSpecialistExpertises = (input) => async () => {
@@ -270,4 +289,6 @@ export {
   setRegisterSpecialistData,
   setExData,
   removeExData,
+  setPageNavigation,
+  setCurrentSpecialist,
 };

@@ -15,6 +15,7 @@ function YourSpecialistItem({ item, index }) {
     console.log(specialistId);
     dispatch(thunkCreateChatRoom(specialistId));
   };
+  console.log(item);
   return (
     <div className="bg-white w-[49%] rounded-xl shadow-2xl mb-3 p-8">
       <div className="specialist-details flex gap-3 w-full">
@@ -24,7 +25,7 @@ function YourSpecialistItem({ item, index }) {
             height="200px"
             width="200px"
             src={
-              item.profileImage ||
+              item.specialist.profileImage ||
               `http://idl.campus.ciencias.ulisboa.pt/wp-content/plugins/idl/img/undefined.png`
             }
             alt="Specialist-Profile"

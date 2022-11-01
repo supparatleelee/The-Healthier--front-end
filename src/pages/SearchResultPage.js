@@ -1,8 +1,16 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import SpecialistItem from '../features/recommendedSpecialists/SpecialistItem';
+import { setPageNavigation } from '../reduxStore/SpecialistSlice';
 
 function SearchResultPage() {
   const { state } = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setPageNavigation('search'));
+  }, []);
 
   return (
     <div className="mt-10 ml-[86px] mr-[100px]">
