@@ -62,10 +62,7 @@ function Router() {
             path="specialist/:specialistId/sessions"
             element={<SpecialistSessions />}
           />
-          <Route
-            path="specialist/:specialistId/sessions/:sessionId"
-            element={<SessionPlaylistPage />}
-          />
+          <Route path="sessions/:videoId" element={<SessionPlaylistPage />} />
           <Route
             path="/become-a-specialist"
             element={<BecomeASpecialistPage />}

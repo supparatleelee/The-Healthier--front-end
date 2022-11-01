@@ -6,6 +6,8 @@ const sessionSlice = createSlice({
   initialState: {
     sessionInfo: [],
     mySpecialists: [],
+    myCurrentSpecialistVideos: [],
+    currentVideo: {},
   },
   reducers: {
     session: (state, action) => {
@@ -15,10 +17,21 @@ const sessionSlice = createSlice({
       state.mySpecialists = action.payload;
       console.log(state.mySpecialists);
     },
+    setMyCurrentSpecialistVideos: (state, action) => {
+      state.myCurrentSpecialistVideos = action.payload;
+    },
+    setCurrentVideo: (state, action) => {
+      state.currentVideo = action.payload;
+    },
   },
 });
 
-const { session, showMySpecialists } = sessionSlice.actions;
+const {
+  session,
+  showMySpecialists,
+  setMyCurrentSpecialistVideos,
+  setCurrentVideo,
+} = sessionSlice.actions;
 
 export const thunkSession = (id) => async (dispatch) => {
   try {
@@ -41,4 +54,9 @@ export const thunkMySpecialists = () => async (dispatch) => {
 };
 
 export default sessionSlice.reducer;
-export { session, showMySpecialists };
+export {
+  session,
+  showMySpecialists,
+  setMyCurrentSpecialistVideos,
+  setCurrentVideo,
+};

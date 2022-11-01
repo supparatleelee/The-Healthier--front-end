@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Area from '../recommendedSpecialists/Area';
 import { getSpecialistIndex } from '../../reduxStore/SpecialistSlice';
+import { setMyCurrentSpecialistVideos } from '../../reduxStore/SessionSlice';
 
 function YourSpecialistItem({ item, index }) {
-  console.log(item);
   const dispatch = useDispatch();
   return (
     <div className="bg-white w-[49%] rounded-xl shadow-2xl mb-3 p-8">
@@ -12,7 +12,12 @@ function YourSpecialistItem({ item, index }) {
         <div className="left-div flex rounded-xl gap-5">
           <img
             className="rounded-xl"
-            src={item.profileImage}
+            height="200px"
+            width="200px"
+            src={
+              item.profileImage ||
+              `http://idl.campus.ciencias.ulisboa.pt/wp-content/plugins/idl/img/undefined.png`
+            }
             alt="Specialist-Profile"
           />
         </div>
@@ -33,7 +38,14 @@ function YourSpecialistItem({ item, index }) {
           className="bg-primary pt-2 pb-2 pl-24 pr-24 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]"
           onClick={() => dispatch(getSpecialistIndex(index))}
         >
-          <Link to={`/specialist/${item.specialistId}/sessions`}>
+          <Link
+            to={`/specialist/${item.specialistId}/sessions`}
+            onClick={() =>
+              dispatch(
+                setMyCurrentSpecialistVideos(item.specialist.SpecialistVideos)
+              )
+            }
+          >
             See Your Sessions
           </Link>
         </button>

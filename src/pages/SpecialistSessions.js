@@ -8,7 +8,6 @@ function SpecialistSessions() {
   const sessionState = useSelector((state) => state.session);
   const specialistInfo = sessionState.mySpecialists[selectedSpecialistIndex];
 
-  const state = useSelector((state) => state.session);
   return (
     <div className="mt-10 mb-10 ml-[86px] mr-[100px] bg-white shadow-allSides rounded-xl">
       <SpecialistDetails
