@@ -60,6 +60,7 @@ function RegisterForm() {
     google.accounts.id.renderButton(document.getElementById('signInBtn'), {
       theme: 'outline',
       size: 'large',
+      width: 350,
     });
   }, []);
 
@@ -141,7 +142,7 @@ function RegisterForm() {
       <button
         id="signInBtn"
         type="button"
-        className="bg-white border text-black rounded-xl h-[6vh] flex justify-center items-center gap-5 hover:border-gray-900"
+        className="bg-white text-black rounded-xl h-[6vh] flex justify-center items-center gap-5 hover:border-gray-900"
         onClick={handleCallbackResponse}
       >
         <GoogleLogo />

@@ -53,6 +53,7 @@ function LoginForm() {
     google.accounts.id.renderButton(document.getElementById('signInBtn'), {
       theme: 'outline',
       size: 'large',
+      width: 400,
     });
   }, [handleCallbackResponse]);
 
@@ -103,7 +104,7 @@ function LoginForm() {
       <button
         type="button"
         id="signInBtn"
-        className="bg-white border text-black rounded-xl h-[6vh] flex justify-center items-center gap-5 hover:border-gray-900"
+        className="text-black rounded-xl h-[6vh] flex justify-center items-center gap-5 hover:border-gray-900"
         onClick={handleCallbackResponse}
       >
         <GoogleLogo />
