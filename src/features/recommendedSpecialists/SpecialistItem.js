@@ -3,6 +3,7 @@ import { CancleDark } from '../../components/icons';
 import Area from './Area';
 import { useDispatch } from 'react-redux';
 import { getSpecialistIndex } from '../../reduxStore/SpecialistSlice';
+import { thunkCreateChatRoom } from '../../reduxStore/ChatSlice';
 
 function SpecialistItem({
   firstName,
@@ -14,6 +15,12 @@ function SpecialistItem({
   index,
 }) {
   const dispatch = useDispatch();
+
+  const handleClickCreateRoom = (e) => {
+    e.preventDefault();
+    console.log(id);
+    dispatch(thunkCreateChatRoom(id));
+  };
 
   let isSearchResult = 1;
 
@@ -50,8 +57,11 @@ function SpecialistItem({
           <Link to={`/specialists/${id}`}>See This Specialist Profile</Link>
         </button>
         {isSearchResult ? (
-          <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium">
-            Message
+          <button
+            className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium"
+            onClick={handleClickCreateRoom}
+          >
+            <Link to={`/chat/${id}`}>Message</Link>
           </button>
         ) : (
           <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3 font-medium">

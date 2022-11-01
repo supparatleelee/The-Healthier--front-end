@@ -16,7 +16,7 @@ function MessagePage() {
 
   useEffect(() => {
     dispatch(thunkGetChatRoom());
-    dispatch(thunkSession());
+    // dispatch(thunkSession());
     socket.auth = { myId };
 
     socket.connect();

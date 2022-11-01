@@ -53,5 +53,15 @@ export const thunkGetChatRoom = () => async (dispatch) => {
   }
 };
 
+export const thunkCreateChatRoom = (id) => async (dispatch) => {
+  try {
+    const res = await chatService.createChatRoom(+id);
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  } finally {
+  }
+};
+
 export default chatSlice.reducer;
 export { getChat, getUser, getRoom };

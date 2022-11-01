@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import * as specialistService from '../api/specialistApi';
+import * as specialistExpertiseService from '../api/specialistExpertisesApi';
 import toastDisplayFailed from '../Toast/toastDisplayFailed';
 import toastDisplaySuccess from '../Toast/toastDisplaySuccess';
 const specialistSlice = createSlice({
@@ -15,10 +16,10 @@ const specialistSlice = createSlice({
   },
   reducers: {
     removeExData: (state, action) => {
-      state.exData = state.exData.filter((item) => item !== action.payload);
+      state.exData = state.exData.filter((item) => +item !== +action.payload);
     },
     setExData: (state, action) => {
-      state.exData = [...state.exData, action.payload];
+      state.exData = [...state.exData, +action.payload];
     },
     setRegisterSpecialistData: (state, action) => {
       state.specialists = [action.payload];
@@ -211,12 +212,23 @@ const {
   recommendedSpecialist,
 } = specialistSlice.actions;
 
+export const thunkCreateSpecialistExpertises = (input) => async () => {
+  try {
+    const res = await specialistExpertiseService.createSpecialistExpertise(
+      input
+    );
+  } catch (err) {
+    console.log(err);
+  } finally {
+  }
+};
+
 export const thunkRegisterSpecialists = (input) => async () => {
   try {
     const res = await specialistService.registerSpecialists(input);
     toastDisplaySuccess('Registered');
   } catch (err) {
-    toastDisplayFailed(err.data.message);
+    toastDisplayFailed(err?.data?.message);
   } finally {
   }
 };

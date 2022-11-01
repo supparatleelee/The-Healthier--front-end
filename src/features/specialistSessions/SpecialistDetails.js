@@ -1,7 +1,9 @@
 // import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
 import Area from '../recommendedSpecialists/Area';
+import { Link } from 'react-router-dom';
+import { thunkCreateChatRoom } from '../../reduxStore/ChatSlice';
 // import Area from '../recommendedSpecialists/Area';
 // import { thunkSession } from '../../reduxStore/SessionSlice';
 
@@ -15,6 +17,14 @@ function SpecialistDetails({
   followupDate,
 }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { specialistId } = useParams();
+
+  const handleClickCreateRoom = (e) => {
+    e.preventDefault();
+    console.log(specialistId);
+    dispatch(thunkCreateChatRoom(specialistId));
+  };
 
   return (
     <div className=" h-62 flex justify-between pt-6 ml-[35px] mr-[50px] pb-10">
@@ -43,8 +53,11 @@ function SpecialistDetails({
         <p>Course: Burn Fat | Coure Duration: {courseDuration} days</p>
 
         <div className="buttons flex gap-3">
-          <button className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]">
-            Message
+          <button
+            className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C] "
+            onClick={handleClickCreateRoom}
+          >
+            <Link to={`/chat/${specialistId}`}>Message</Link>
           </button>
           <div className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3">
             Next follow-up date: {followupDate || 'Undefined'}

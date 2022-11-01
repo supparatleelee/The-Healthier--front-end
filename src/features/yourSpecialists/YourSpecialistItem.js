@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom';
 import Area from '../recommendedSpecialists/Area';
 import { getSpecialistIndex } from '../../reduxStore/SpecialistSlice';
 import { setMyCurrentSpecialistVideos } from '../../reduxStore/SessionSlice';
+import { thunkCreateChatRoom } from '../../reduxStore/ChatSlice';
+import * as chatRoomService from '../../api/chatApi';
 
 function YourSpecialistItem({ item, index }) {
   const dispatch = useDispatch();
+
+  const specialistId = item?.specialistId;
+  const handleClickCreateRoom = (e) => {
+    e.preventDefault();
+    console.log(specialistId);
+    dispatch(thunkCreateChatRoom(specialistId));
+  };
   return (
     <div className="bg-white w-[49%] rounded-xl shadow-2xl mb-3 p-8">
       <div className="specialist-details flex gap-3 w-full">
@@ -49,8 +58,16 @@ function YourSpecialistItem({ item, index }) {
             See Your Sessions
           </Link>
         </button>
-        <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium">
-          Message
+        <button
+          className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium"
+          onClick={handleClickCreateRoom}
+        >
+          <Link
+            to={`/chat/${item.specialistId}`}
+            className="inline-flex py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Messages
+          </Link>
         </button>
       </div>
     </div>
