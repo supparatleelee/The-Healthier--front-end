@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CancleDark } from '../../components/icons';
 import Area from './Area';
-import { useDispatch } from 'react-redux';
-import { getSpecialistIndex } from '../../reduxStore/SpecialistSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getSpecialistIndex,
+  setCurrentSpecialist,
+} from '../../reduxStore/SpecialistSlice';
 import { thunkCreateChatRoom } from '../../reduxStore/ChatSlice';
 
 function SpecialistItem({
@@ -13,13 +16,23 @@ function SpecialistItem({
   id,
   profileImage,
   index,
+  specialistData,
 }) {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.specialist.pageNavigation);
 
   const handleClickCreateRoom = (e) => {
     e.preventDefault();
-    console.log(id);
     dispatch(thunkCreateChatRoom(id));
+  };
+
+  const handleOnClick = () => {
+    if (state === 'recommended') {
+      dispatch(setCurrentSpecialist(specialistData));
+    }
+    if (state === 'search') {
+      dispatch(getSpecialistIndex(index));
+    }
   };
 
   let isSearchResult = 1;
@@ -52,7 +65,7 @@ function SpecialistItem({
       <div className="buttons flex justify-between gap-3 mt-5">
         <button
           className="bg-primary pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]"
-          onClick={() => dispatch(getSpecialistIndex(index))}
+          onClick={handleOnClick}
         >
           <Link to={`/specialists/${id}`}>See This Specialist Profile</Link>
         </button>
