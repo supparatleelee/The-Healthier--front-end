@@ -41,7 +41,7 @@ function Router() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search-result" element={<SearchResultPage />} />
           <Route path="/chat" element={<MessagePage />} />
-          <Route path="/chat/:id" elemen t={<MessagePage />} />
+          <Route path="/chat/:id" element={<MessagePage />} />
 
           <Route path="/specialists/:id" element={<SpecialistProfilePage />} />
           <Route
