@@ -1,12 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { thunkGetSpecialists } from '../../reduxStore/SpecialistSlice';
-import SearchCategoriesDropdown from './SearchCategoriesDropdown';
+import {
+  setPageNavigation,
+  thunkGetSpecialists,
+} from '../../reduxStore/SpecialistSlice';
 
 function Search() {
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = useCallback(() => setIsOpen(false), []);
   const Ele = useRef();
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
@@ -17,35 +17,12 @@ function Search() {
     e.preventDefault();
 
     dispatch(thunkGetSpecialists(search, navigate));
+    dispatch(setPageNavigation('search'));
   };
 
   return (
     <form onSubmit={handleSearch}>
       <div className="flex ml-[24vw]" ref={Ele}>
-        {/* <button
-          id="dropdown-button"
-          className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          All categories
-          <svg
-            aria-hidden="true"
-            className="ml-1 w-4 h-4"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </button> */}
-
-        {/* <SearchCategoriesDropdown open={isOpen} onClose={onClose} Ele={Ele} /> */}
-
         <div className="relative w-[500px]">
           <input
             type="search"

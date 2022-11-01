@@ -11,11 +11,10 @@ function SpecialistProfilePage() {
   const recommendedSpecialist = useSelector(
     (state) => state.specialist.currentSpecialist
   );
-  console.log(recommendedSpecialist);
 
   return (
     <div className="mt-10 ml-[86px] mr-[100px] mb-10 animate-fadeOpen">
-      {recommendedSpecialist ? (
+      {recommendedSpecialist.length > 0 ? (
         <>
           <SpecialistProfile
             firstName={recommendedSpecialist?.firstName}
