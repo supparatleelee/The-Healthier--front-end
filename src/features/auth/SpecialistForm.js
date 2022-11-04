@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GoogleLogo } from '../../components/icons';
 import {
   showModalSpecialistForm,
+  thunkGetMe,
   thunkGooglelogin,
   thunkSignup,
 } from '../../reduxStore/AuthSlice';

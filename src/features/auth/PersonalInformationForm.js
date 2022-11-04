@@ -3,9 +3,6 @@ import { useDispatch } from 'react-redux';
 import { thunkUpdateUser } from '../../reduxStore/AuthSlice';
 import toastDisplayFailed from '../../Toast/toastDisplayFailed';
 
-// import toastDisplayFailed from '../../Toast/toastDisplayFailed';
-// import { validateRegister } from '../../validations/userValidation';
-
 function PersonalInformationForm({ onModalClose }) {
   const dispatch = useDispatch();
 
