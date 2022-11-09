@@ -38,7 +38,10 @@ const specialistSlice = createSlice({
     },
     searchedSpecialist: (state, action) => {
       state.specialists = [...action.payload.specialists];
-
+      console.log(state.specialists, 'SearcheSpecialist');
+      console.log(action.payload.search);
+      console.log(action.payload.specialists);
+      console.log(action.payload.navigate);
       const searchedSpecialist = state.specialists?.filter(
         (item) =>
           item?.area
@@ -59,7 +62,7 @@ const specialistSlice = createSlice({
               .includes(action.payload.search?.toLowerCase())
           )
       );
-
+      console.log(searchedSpecialist, 'After search');
       state.searchedSpecialist = [...searchedSpecialist];
       action.payload.navigate('/search-result', {
         state: state.searchedSpecialist,
@@ -73,7 +76,7 @@ const specialistSlice = createSlice({
       const userInfo = action.payload.userInfo;
       let matchingExpertise;
       let recSpecialists = [];
-      switch (userInfo.goals) {
+      switch (userInfo?.goals) {
         case 'Back Pain':
           matchingExpertise = [
             'Yoga',
@@ -255,6 +258,7 @@ export const thunkRegisterSpecialists = (input) => async () => {
 export const thunkGetSpecialists = (search, navigate) => async (dispatch) => {
   try {
     const specialists = await specialistService.getSpecialists();
+    console.log(specialists);
     dispatch(
       searchedSpecialist({
         search,

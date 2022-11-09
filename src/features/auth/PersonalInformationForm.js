@@ -124,7 +124,8 @@ function PersonalInformationForm({ onModalClose }) {
             <option value="Burn Fat">Burn Fat</option>
             <option value="Lose Weight">Lose Weight</option>
             <option value="Just for Fun">Just for Fun</option>
-            <option value="Becoem a Specialist">Become a Specialist</option>
+            <option value="Other">Other</option>
+            {/* <option value="Becoem a Specialist">Become a Specialist</option> */}
           </select>
         </div>
         <button className="bg-primary bg-gradient-to-r from-[#DE8443] to-[#B3683C] rounded-xl h-[6vh] text-white">

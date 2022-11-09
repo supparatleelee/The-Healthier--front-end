@@ -12,7 +12,7 @@ function Search() {
   const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
-
+  console.log(search);
   const handleSearch = (e) => {
     e.preventDefault();
 
