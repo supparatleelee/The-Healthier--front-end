@@ -15,7 +15,7 @@ function ClientDetails() {
     <div className="flex justify-between items-start">
       <div className="flex gap-3">
         <img
-          className="w-36"
+          className="w-[150px] h-[150px]"
           src={
             profileImage ||
             'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'

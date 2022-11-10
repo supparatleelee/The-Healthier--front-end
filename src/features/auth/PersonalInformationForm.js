@@ -36,7 +36,7 @@ function PersonalInformationForm({ onModalClose }) {
     <div className="flex flex-col gap-4">
       <form className="flex flex-col gap-4" onSubmit={handleSubmitForm}>
         <div className="flex items-center">
-          <label htmlFor="gender" className="font-medium mr-3">
+          <label htmlFor="gender" className="font-medium mr-[1.8vw]">
             Gender
           </label>
           <select
@@ -45,7 +45,7 @@ function PersonalInformationForm({ onModalClose }) {
             onChange={changeInput}
             className="rounded-xl border-gray-400 w-full h-[6.2vh]"
           >
-            <option value=""></option>
+            <option value="">Select your gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
@@ -60,12 +60,11 @@ function PersonalInformationForm({ onModalClose }) {
             className="rounded-xl w-full h-[6.2vh] border-gray-400"
             placeholder="BirthDate"
             name="birthDate"
-            // value={dataRegister?.firstName}
             onChange={changeInput}
           />
         </div>
         <div className="flex items-center">
-          <label htmlFor="height" className="font-medium mr-3">
+          <label htmlFor="height" className="font-medium mr-[2.2vw]">
             Height
           </label>
           <input
@@ -74,12 +73,11 @@ function PersonalInformationForm({ onModalClose }) {
             className="rounded-xl w-full h-[6.2vh] border-gray-400"
             placeholder="Height"
             name="height"
-            // value={dataRegister?.lastName}
             onChange={changeInput}
           />
         </div>
         <div className="flex items-center">
-          <label htmlFor="weight" className="font-medium mr-3">
+          <label htmlFor="weight" className="font-medium mr-[2vw]">
             Weight
           </label>
           <input
@@ -88,12 +86,11 @@ function PersonalInformationForm({ onModalClose }) {
             className="rounded-xl w-full h-[6.2vh] border-gray-400"
             placeholder="Weight"
             name="weight"
-            // value={dataRegister?.email}
             onChange={changeInput}
           />
         </div>
         <div className="flex items-center">
-          <label htmlFor="goals" className="font-medium mr-3">
+          <label htmlFor="goals" className="font-medium mr-[3.2vw]">
             Goal
           </label>
           <select
@@ -105,27 +102,19 @@ function PersonalInformationForm({ onModalClose }) {
             <option value="">Select your goal here</option>
             <option value="Back Pain">Back Pain</option>
             <option value="Headache">Headache</option>
-            <option value="Build Muscle - Neck & Shoulder">
-              Build Muscle - Neck & Shoulder
+            <option value="Neck and Shoulder Ache">
+              Neck and Shoulder Ache
             </option>
-            <option value="Build Muscle - Lower Body">
-              Build Muscle - Lower Body
-            </option>
-            <option value="Build Muscle - All Body">
-              Build Muscle - All Body
-            </option>
-            <option value="Recover - Ready to Play">
-              Recover - Ready to Play
-            </option>
-            <option value="Recover - After Surgery">
+            <option value="Lowerbody Pain">Lowerbody Pain</option>
+            <option value="Ready to Play">Recover - Ready to Play</option>
+            <option value="After Surgery Recovery">
               Recover - After Surgery
             </option>
-            <option value="Sliming">Sliming</option>
+            <option value="Slimming">Slimming</option>
             <option value="Burn Fat">Burn Fat</option>
-            <option value="Lose Weight">Lose Weight</option>
+            <option value="Building Muscle">Build Muscle - All Body</option>
             <option value="Just for Fun">Just for Fun</option>
             <option value="Other">Other</option>
-            {/* <option value="Becoem a Specialist">Become a Specialist</option> */}
           </select>
         </div>
         <button className="bg-primary bg-gradient-to-r from-[#DE8443] to-[#B3683C] rounded-xl h-[6vh] text-white">

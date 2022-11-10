@@ -18,13 +18,13 @@ function BookingDropDown({ open, onClose, Ele, specialistId }) {
 
   return (
     <div
-      className={`animate-fadeOpen absolute left-[24.5vw] top-[46vh] z-10 w-[34.5vh] bg-white rounded-xl divide-gray-100 dark:bg-gray-700 p-6 shadow-allSides ${
+      className={`animate-fadeOpen absolute left-[24.5vw] top-[46vh] z-[2] w-[34.5vh] bg-white rounded-xl divide-gray-100 dark:bg-gray-700 p-6 shadow-allSides ${
         open ? '' : 'hidden'
       }`}
       ref={dropdownEl}
       onClick={(e) => e.stopPropagation()}
     >
-      <CourseDurationForm specialistId={specialistId} />
+      <CourseDurationForm specialistId={specialistId} onClose={onClose} />
     </div>
   );
 }

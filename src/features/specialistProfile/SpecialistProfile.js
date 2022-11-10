@@ -44,13 +44,13 @@ function SpecialistProfile({
 
           <div className="buttons flex gap-3">
             <button
-              className="bg-primary z-20 pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C] hover:shadow-allSides"
+              className="bg-primary z-[3] pt-2 pb-2 pl-16 pr-16 rounded-lg text-white font-medium hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C] hover:shadow-allSides"
               onClick={() => setIsOpen((prev) => !prev)}
               ref={Ele}
             >
               Book This Specialist
             </button>
-            <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-10 pr-10 rounded-lg gap-3 font-medium">
+            <button className="flex justify-between items-center border border-primary pt-2 pb-2 pl-[5vw] pr-[5vw] rounded-lg gap-3 font-medium">
               Message
             </button>
           </div>

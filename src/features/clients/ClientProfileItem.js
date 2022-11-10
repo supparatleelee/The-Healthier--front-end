@@ -34,8 +34,7 @@ function ClientProfileItem({
       >
         <div className="flex gap-3">
           <img
-            height="76px"
-            width="76px"
+            className="w-[100px] h-[100px]"
             src={
               profileImage ||
               `https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png`

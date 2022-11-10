@@ -23,10 +23,11 @@ function PackagePage() {
         </h1>
 
         <p className="text-darkGrey text-[18px] mt-5">
-          Lorem ipuse weros khfe iwelrkjs jskdf
+          Buy The Healthier Package in order to get the best experience from
+          this platform!
         </p>
 
-        <div className="package-container flex gap-3 mt-10 justify-start flex-wrap">
+        <div className="package-container flex gap-3 mt-10 justify-between flex-wrap mb-10">
           {state.packages.map((item, index) => (
             <PackageItem key={index} item={item} />
           ))}

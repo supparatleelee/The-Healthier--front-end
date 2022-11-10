@@ -11,7 +11,7 @@ function UploadedVideoItem({
     <div className="flex justify-between items-center">
       <div className="flex gap-1">
         <video
-          className="video bg-lightGrey h-[18vh] w-[30vh] text-center mr-5"
+          className="video bg-lightGrey h-[18vh] text-center mr-5"
           controls="controls"
         >
           <source src={videoUrl} type="video/mp4" />

@@ -35,16 +35,20 @@ function SpecialistVideoPage() {
             <SearchUploadedVideos />
 
             <div className="uploaded-videos-container bg-white p-10 rounded-xl shadow-allSides flex flex-col gap-8">
-              {videosState.map((item, index) => (
-                <UploadedVideoItem
-                  key={index}
-                  videoTitle={item.name}
-                  videoPermission={item.videoStatus}
-                  uploadedAt={item.createdAt}
-                  videoUrl={item.videoFiles}
-                  videoState={item}
-                />
-              ))}
+              {videosState.length === 0 ? (
+                <p>No uploaded Video yet</p>
+              ) : (
+                videosState.map((item, index) => (
+                  <UploadedVideoItem
+                    key={index}
+                    videoTitle={item.name}
+                    videoPermission={item.videoStatus}
+                    uploadedAt={item.createdAt}
+                    videoUrl={item.videoFiles}
+                    videoState={item}
+                  />
+                ))
+              )}
             </div>
           </div>
 

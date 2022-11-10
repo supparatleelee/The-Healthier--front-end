@@ -42,13 +42,11 @@ function SpecialistItem({
       <div className="specialist-details flex gap-3 w-full">
         <div className="left-div flex rounded-xl gap-5">
           <img
-            className="rounded-xl"
+            className="rounded-xl w-[200px] h-[200px]"
             src={
               profileImage ||
               `http://idl.campus.ciencias.ulisboa.pt/wp-content/plugins/idl/img/undefined.png`
             }
-            height="200px"
-            width="200px"
             alt="Specialist-Profile"
           />
         </div>
@@ -71,7 +69,7 @@ function SpecialistItem({
         </button>
         {isSearchResult ? (
           <button
-            className="flex justify-between items-center border border-primary pt-2 pb-2 pl-16 pr-16 rounded-lg gap-3 font-medium"
+            className="flex justify-between items-center border border-primary pt-2 pb-2 pl-[5vw] pr-[5vw] rounded-lg gap-3 font-medium"
             onClick={handleClickCreateRoom}
           >
             <Link to={`/chat/${id}`}>Message</Link>

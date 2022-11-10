@@ -1,7 +1,7 @@
 import { thunkBooking } from '../../reduxStore/BookingSlice';
 import { useDispatch } from 'react-redux';
 
-function CourseDurationForm({ specialistId }) {
+function CourseDurationForm({ specialistId, onClose }) {
   const dispatch = useDispatch();
 
   const handleOnSubmit = async (e) => {
@@ -12,6 +12,7 @@ function CourseDurationForm({ specialistId }) {
     for (let key in formProps) {
       if (formProps.hasOwnProperty(key)) {
         dispatch(thunkBooking(specialistId, formProps[key]));
+        onClose();
       }
     }
   };

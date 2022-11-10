@@ -25,7 +25,7 @@ function PackageItem({ item }) {
 
   return (
     <>
-      <div className="flex flex-col justify-between bg-white shadow-allSides rounded-xl p-6 w-96 text-center gap-10">
+      <div className="flex flex-col justify-between bg-white shadow-allSides rounded-xl p-6 w-[32%] mb-3 text-center gap-10">
         <h2 className="font-semibold text-[20px]">{formatItemName(item)}</h2>
 
         <div className="font-medium flex flex-col gap-3">
@@ -43,14 +43,6 @@ function PackageItem({ item }) {
           </p>
         </div>
 
-        {/* <button
-          onClick={handlePayment}
-          type="button"
-          className="bg-primary rounded-xl pt-3 pb-3 pl-5 pr-5 text-white hover:bg-gradient-to-r hover:from-[#DE8443] hover:to-[#B3683C]"
-        
-        >
-          Make a payment
-        </button> */}
         <Payment currentPrice={item.price} id={item.id} />
       </div>
     </>

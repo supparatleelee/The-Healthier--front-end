@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <>
-      <nav className="bg-white h-28 bg-opacity-20 w-screen backdrop-blur-xl fixed flex justify-between items-center pr-[100px] pt-4 shadow-lg">
+      <nav className="z-10 bg-white h-28 bg-opacity-20 w-screen backdrop-blur-xl fixed flex justify-between items-center pr-[100px] pt-4 shadow-lg">
         <Logo />
         <Search />
         {user?.id ? <AuthUserMenu /> : <UserMenu />}

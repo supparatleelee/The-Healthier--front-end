@@ -18,7 +18,8 @@ export const thunkBooking =
       await bookingService.bookingSpecialist(specialistId, {
         courseDuration: courseDuration,
       });
-      toastDisplaySuccess('Success booking this specialist');
+
+      toastDisplaySuccess('booking this specialist');
     } catch (err) {
       console.log(err);
       toastDisplayFailed(err.response?.data.message);
