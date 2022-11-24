@@ -1,0 +1,23 @@
+  // การเรียกใช้ใน Components 
+  // import
+  // import { useDispatch, useSelector } from 'react-redux';
+  
+  //สร้าง Object 
+  // const state = useSelector(state => state);
+  // const dispatch = useDispatch()
+
+  //การสร้าง function ในการเปลี่ยน State 
+  //ให้สร้างจากฟังก์ชั่น ใน folder reduxStore/เลือก slice ที่ต้องการเพิม ฟังก์ชั่น
+  //สร้างใน reducers : {
+    ชื่อฟังก์ชั่นที่เรียกใน dispatch : (state, action) => {
+      state.ชื่ิอstate ที่ต้องการupdate = action.payload (parameters ที่ส่งผ่าน dispatch)
+    }
+  }
+
+  //การสร้าง state ใหม่ 
+  //ให้กำหนด state เริ่มต้น ใน initialState : {
+    ชื่อStateที่จะเรียกใช้ : ค่าตั้งต้น
+  }
+
+  // สำหรับหัวข้อที่ไม่มีใน slice สามารถสร้าง เป็น ไฟล์ xxxSlice.js ใหม่ได้ ใน Folder reduxStore
+  

@@ -1,0 +1,35 @@
+import { CancleDark } from '../icons';
+
+function ExpertiseModal({ title, children, modalOpen, onModalClose }) {
+  return (
+    <>
+      {modalOpen && (
+        <div
+          className="modal-bg fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-60 z-[50]"
+          onClick={onModalClose}
+        >
+          <div
+            className="modal-container fixed right-[28vw] top-[8vh] w-[40%] overflow-y-scroll max-h-[80vh] bg-white rounded-xl p-6 z-[100] animate-fadeOpen"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header flex justify-between items-center pb-3">
+              <button onClick={onModalClose} className="p-2">
+                <CancleDark />
+              </button>
+              <h1 className="modal-title font-semibold text-lg">{title}</h1>
+              <div className="invisible p-2">
+                <CancleDark />
+              </div>
+            </div>
+
+            <hr />
+
+            <div className="modal-body pt-7">{children}</div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default ExpertiseModal;
